@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare var Parse: any;
 
 /**
 *	This class represents the lazy loaded DashboardComponent.
@@ -10,4 +11,8 @@ import { Component } from '@angular/core';
 	templateUrl: 'dashboard.component.html'
 })
 
-export class DashboardComponent { }
+export class DashboardComponent {
+  constructor(){
+    console.log(Parse);
+  }
+}
