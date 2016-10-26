@@ -8,6 +8,7 @@ import { HomeModule } from './home/home.module';
 import { ChartModule } from './charts/chart.module';
 import { BlankPageModule } from './blank-page/blankPage.module';
 import { TableModule } from './tables/table.module';
+import { ProjectModule } from './project/project.module';
 import { FormModule } from './forms/forms.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
@@ -28,6 +29,7 @@ import {SidebarComponent} from '../shared/index';
     	HomeModule,
         ChartModule,
         TableModule,
+        ProjectModule,
         FormModule,
         GridModule,
     	BSComponentModule,
