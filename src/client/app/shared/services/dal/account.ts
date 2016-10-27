@@ -21,6 +21,28 @@ export class AccountDAL{
     console.log("init AccountDAL success.");
   }
 
+  public signIn(email: String, pwd: String, handleSuc: any, handdleErr: any){
+    this.Parse.user().logIn(email, pwd,{
+      success: (user: any) => {
+        handleSuc(user);
+      },
+      error: (user: any, err: any)=>{
+        handdleErr(user, err);
+      }
+    });
+    // return this.Parse.query('User', (obj: any)=>{
+    //   obj.equalTo(this.email_key, email);
+    //   obj.equalTo(this.password_key, pwd);
+    //   return obj;
+    // })
+  }
 
+  public getCurrentAccount(){
+    return this.Parse.currentUser();
+  }
+
+  public signOut(){
+    return this.Parse.user().logOut();
+  }
 
 }

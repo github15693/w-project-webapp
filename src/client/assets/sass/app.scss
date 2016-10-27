@@ -1,2 +1,36 @@
 @import "../bootstrap/variables.scss";
 @import "app-base.scss";
+
+//sign in button in sign in page
+.btn-sign-in{
+  width: 100%;
+}
+//override css sidebar and topbar
+.topnav{
+  background: #2b7090 !important;
+}
+.sidebar {
+  background-color: #357CA5 !important;
+}
+.sidebar .list-group a.list-group-item {
+  background: #357CA5 !important;
+  color: #fff  !important;
+}
+.sidebar .list-group a:hover {
+  background: #2b7090 !important;
+  }
+.sidebar .list-group a.router-link-active {
+  background: #2B7090 !important;
+  }
+.sidebar .sidebar-dropdown .panel-title a {
+  background: #357CA5 !important;
+}
+.sidebar .sidebar-dropdown .panel-title:hover {
+  background: #2B7090 !important;
+}
+.sidebar .sidebar-dropdown .panel-collapse .panel-body .list-group-item {
+  background-color: #357CA5 !important;
+}
+.sidebar .sidebar-dropdown .panel-collapse .panel-body .list-group-item:hover {
+  background: #2B7090 !important;
+}

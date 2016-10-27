@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-declare var Parse: any;
 
+import {Router} from '@angular/router';
+import {AccountDAL} from '../shared/index'
 /**
 *	This class represents the lazy loaded DashboardComponent.
 */
@@ -12,7 +13,11 @@ declare var Parse: any;
 })
 
 export class DashboardComponent {
-  constructor(){
-    console.log(Parse);
+
+  constructor(private account: AccountDAL, private router: Router){
+      if(this.account.getCurrentAccount() == null){
+        this.router.navigate(['/']);
+      }
   }
+
 }

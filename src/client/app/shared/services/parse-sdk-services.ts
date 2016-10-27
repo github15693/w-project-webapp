@@ -122,6 +122,10 @@ export class ParseSDK {
     return Parse.User.current();
   }
 
+  user(){
+    return Parse.User;
+  }
+
   parse(){
     return Parse;
   }
