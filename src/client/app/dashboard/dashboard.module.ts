@@ -9,6 +9,8 @@ import { ChartModule } from './charts/chart.module';
 import { BlankPageModule } from './blank-page/blankPage.module';
 import { TableModule } from './tables/table.module';
 import { ProjectModule } from './project/project.module';
+import { CustomersModule } from './customers/customers.module';
+import { TechnologyModule } from './technology/technology.module';
 import { FormModule } from './forms/forms.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
@@ -30,6 +32,8 @@ import {SidebarComponent} from '../shared/index';
         ChartModule,
         TableModule,
         ProjectModule,
+        CustomersModule,
+        TechnologyModule,
         FormModule,
         GridModule,
     	BSComponentModule,

@@ -4,10 +4,10 @@ import { ModalDirective } from 'ng2-bootstrap/components/modal/modal.component';
 @Component({
 	moduleId: module.id,
 	selector: 'tables-cmp',
-	templateUrl: 'project.component.html'
+	templateUrl: 'technology.component.html'
 })
 
-export class ProjectComponent {
+export class TechnologyComponent {
   @ViewChild('childModal') public childModal:ModalDirective;
 
   // Button
