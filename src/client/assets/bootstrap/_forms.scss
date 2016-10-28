@@ -76,10 +76,49 @@
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .form-control-label {
-  padding: $input-padding-y $input-padding-x;
-  margin-bottom: 0; // Override the `<label>` default
+  //padding: $input-padding-y $input-padding-x;
+  margin-bottom: 10px;
+  margin-top: 10px;// Override the `<label>` default
+  color: #2196F3;
+  font-size: 14px;
+  font-weight: bold;
 }
 
+.form-control-sub-label {
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0; // Override the `<label>` default
+  color: #2196F3;
+  font-size: 14px;
+}
+
+.form-default-label {
+  //padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.form-files{
+  border-radius: 3px;
+  background-color: white;
+  width: 100%;
+  height: 500px;
+}
+
+.table-social {
+  width: 100%;
+  tr td:first-child {
+    width: 60%;
+    height: 100%;
+  }
+}
+
+.table-file {
+  width: 100%;
+  tr td:first-child {
+    width: 52%;
+    height: 100%;
+  }
+}
 
 // Todo: clear this up
 
@@ -132,6 +171,13 @@
     padding-right: 0;
     padding-left: 0;
   }
+}
+
+.right {
+  position: absolute;
+  right: 0px;
+  width: 300px;
+  background-color: #b0e0e6;
 }
 
 
