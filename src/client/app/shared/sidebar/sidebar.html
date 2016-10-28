@@ -1,36 +1,39 @@
 <button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">
     &#9776;
 </button>
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+<nav class="sidebar sidebar-background" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
-        <a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-dashboard"></i> Dashboard
         </a>
-        <a [routerLink]="['chart']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['projects']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
+          <i class="fa fa-fw fa-table"></i> Projects
+        </a>
+        <a [routerLink]="['chart']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-bar-chart-o"></i> Charts
         </a>
-        <a [routerLink]="['tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['tables']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-table"></i> Tables
         </a>
-      <a [routerLink]="['projects']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-fw fa-briefcase"></i> Projects
-      </a>
-      <a [routerLink]="['customers']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-fw fa-users"></i> Customers
-      </a>
-      <a [routerLink]="['technology']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-fw fa-database"></i> Technology
-      </a>
-        <a [routerLink]="['forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['projects']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+          <i class="fa fa-fw fa-briefcase"></i> Projects
+        </a>
+        <a [routerLink]="['customers']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+          <i class="fa fa-fw fa-users"></i> Customers
+        </a>
+        <a [routerLink]="['technology']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+          <i class="fa fa-fw fa-database"></i> Technology
+        </a>
+        <a [routerLink]="['forms']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-edit"></i> Forms
         </a>
-        <a [routerLink]="['element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['element']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-desktop"></i> Bootstrap Elements
         </a>
-        <a [routerLink]="['grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['grid']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-wrench"></i> Bootstrap Grid
         </a>
-        <a [routerLink]="['components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['components']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-th-list"></i> &nbsp;Component
         </a>
         <div class="nested-menu">

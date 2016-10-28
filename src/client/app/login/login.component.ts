@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
+
 
 //services
 import {AccountDAL} from '../shared/index'
@@ -13,24 +16,24 @@ import {AccountDAL} from '../shared/index'
   templateUrl: 'login.component.html'
 })
 
-export class LoginComponent implements OnInit{
-  clickMessage = '';
-
-  constructor(private Account: AccountDAL) {
-
+export class LoginComponent {
+  username = "";
+  pwd = "";
+  validationMessage = false;
+  constructor(private account: AccountDAL, private router: Router) {
+    if(this.account.getCurrentAccount() != null){
+      this.router.navigate(['/dashboard/projects']);
+    }
   }
 
-  ngOnInit(){
-    console.log('--init--');
-    // this.Parse.query('User', (obj: any)=>{
-    //   // obj.equalTo()
-    //   return obj;
-    // }).then((data: any)=>{
-    //   console.log(data);
-    // });
+  signIn() {
+    this.account.signIn(this.username, this.pwd, (user: any)=>{
+      this.router.navigate(['/dashboard/projects'])
+    }, (user: any, err: any)=>{
+      this.validationMessage = err.message;
+    });
   }
 
-  onClickMe() {
-    this.clickMessage = 'You are my hero!';
-  }
+
+
 }

@@ -18,17 +18,20 @@ import { BSElementModule } from './bs-element/bsElement.module';
 
 import { DashboardComponent } from './dashboard.component';
 
-import {TopNavComponent} from '../shared/index';
-import {SidebarComponent} from '../shared/index';
+// import {TopNavComponent} from '../shared/index';
+import {SidebarComponent, TopNavModule} from '../shared/index';
+
+import {AccountDAL, ParseSDK} from '../shared/index';
 
 
 @NgModule({
     imports: [
-        CommonModule,
+      CommonModule,
     	RouterModule,
     	DropdownModule,
-        ModalModule,
+      ModalModule,
     	HomeModule,
+
         ChartModule,
         TableModule,
         ProjectModule,
@@ -36,12 +39,23 @@ import {SidebarComponent} from '../shared/index';
         TechnologyModule,
         FormModule,
         GridModule,
+
+      ChartModule,
+      TableModule,
+      ProjectModule,
+      FormModule,
+      GridModule,
+
     	BSComponentModule,
-        BSElementModule,
-        BlankPageModule
+      BSElementModule,
+      BlankPageModule,
+      TopNavModule
     ],
-    declarations: [DashboardComponent, TopNavComponent, SidebarComponent],
-    exports: [DashboardComponent, TopNavComponent, SidebarComponent]
+    declarations: [DashboardComponent, SidebarComponent],
+    exports: [DashboardComponent, SidebarComponent],
+    providers: [AccountDAL, ParseSDK]
 })
 
-export class DashboardModule { }
+export class DashboardModule {
+
+}
