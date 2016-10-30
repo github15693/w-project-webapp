@@ -13,6 +13,7 @@ import { CustomersModule } from './customers/customers.module';
 import { TechnologyModule } from './technology/technology.module';
 import { UserManagementModule } from './usermanagement/usermanagement.module';
 import { FormModule } from './forms/forms.module';
+import { ProfileModule } from './profile/profile.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
 import { BSElementModule } from './bs-element/bsElement.module';
@@ -40,6 +41,7 @@ import {AccountDAL, ParseSDK} from '../shared/index';
         TechnologyModule,
         UserManagementModule,
         FormModule,
+        ProfileModule,
         GridModule,
 
       ChartModule,

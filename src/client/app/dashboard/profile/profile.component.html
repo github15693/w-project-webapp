@@ -1,0 +1,65 @@
+<div class="container-fluid">
+      <div class="row">
+        <div class="card card-default col-xl-3 text-xs-center" style="padding: 20px;">
+          <div>
+            <img src="../../assets/img/avatar-default.png" width="50%"/>
+          </div>
+          <div class="font-weight-bold"><h2>Nguyen Du</h2></div>
+          <div>BA, QC</div>
+          <div>
+            <button class="btn btn-primary" (click)="ChangePasswordModal.show()">Change password</button>
+          </div>
+        </div>
+        <div class="card card-default col-xl-8 text-xs-center" style="padding: 10px; margin-left: 10px">
+          <div class="col-xl-12 text-lg-left">
+          <div class="col-xl-3">Email</div>
+          <div class="col-xl-9">nguyendu@innoria.com</div>
+          <div class="col-xl-3">Birthday</div>
+          <div class="col-xl-9">13-Oct-1994</div>
+          <div class="col-xl-3">Phone 1</div>
+          <div class="col-xl-9">01214240565</div>
+          <div class="col-xl-3">Skype</div>
+          <div class="col-xl-9">du.tuannguyen</div>
+          <div class="col-xl-3">Address</div>
+          <div class="col-xl-9">An Giang</div>
+          <div class="col-xl-3">Phone 2</div>
+          <div class="col-xl-9">-</div>
+          </div>
+        </div>
+    </div>
+    <!-- /.row -->
+  <!--START Modal Change password-->
+  <div bsModal #ChangePasswordModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="ChangePasswordModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title">Change password</h5>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Old password: </label>
+              <div class="col-sm-9"><input class="form-control"></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">New password: </label>
+              <div class="col-sm-9"><input class="form-control"></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Confirm new password: </label>
+              <div class="col-sm-9"><input class="form-control"></div>
+            </div>
+            <div style="text-align: right;">
+              <button type="button" class="btn btn-secondary" (click)="ChangePasswordModal.hide()" aria-hidden="true">Close</button>
+              <button type="button" class="btn btn-primary">Save change</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--END Modal Change password-->
+</div>
