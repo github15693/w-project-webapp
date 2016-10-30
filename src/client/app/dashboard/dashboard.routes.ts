@@ -4,7 +4,7 @@ import { HomeRoutes } from './home/index';
 import { ChartRoutes } from './charts/index';
 import { BlankPageRoutes } from './blank-page/index';
 import { TableRoutes } from './tables/index';
-import { ProjectRoutes } from './project/index';
+import { ProjectRoutes } from './projects/index';
 import { CustomersRoutes } from './customers/index';
 import { TechnologyRoutes } from './technology/index';
 import { UserManagementRoutes } from './usermanagement/index';

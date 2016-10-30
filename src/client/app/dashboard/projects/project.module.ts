@@ -6,10 +6,16 @@ import {
   ModalModule
 } from 'ng2-bootstrap/ng2-bootstrap';
 
+//services
+import {ProjectDAL, ParseSDK} from '../../shared/index';
+
 @NgModule({
     imports: [RouterModule,FormsModule,ModalModule],
     declarations: [ProjectComponent],
-    exports: [ProjectComponent]
+    exports: [ProjectComponent],
+    providers: [ProjectDAL, ParseSDK]
 })
 
-export class ProjectModule { }
+export class ProjectModule {
+
+}

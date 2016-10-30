@@ -1,6 +1,8 @@
 import {Component, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap/components/modal/modal.component';
 
+import {TechnologyDAL} from "../../shared/index"
+
 @Component({
 	moduleId: module.id,
 	selector: 'tables-cmp',
@@ -14,4 +16,9 @@ export class TechnologyComponent {
   public singleModel:string = '1';
   public radioModel:string = 'Middle';
   public checkModel:any = {left: false, middle: true, right: false};
+
+  constructor(private technology: TechnologyDAL) {
+   this.technology.getTechnologies();
+  }
+
 }

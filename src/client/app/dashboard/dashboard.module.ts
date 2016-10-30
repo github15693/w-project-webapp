@@ -8,7 +8,7 @@ import { HomeModule } from './home/home.module';
 import { ChartModule } from './charts/chart.module';
 import { BlankPageModule } from './blank-page/blankPage.module';
 import { TableModule } from './tables/table.module';
-import { ProjectModule } from './project/project.module';
+import { ProjectModule } from './projects/project.module';
 import { CustomersModule } from './customers/customers.module';
 import { TechnologyModule } from './technology/technology.module';
 import { UserManagementModule } from './usermanagement/usermanagement.module';
