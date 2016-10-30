@@ -7,6 +7,7 @@ import { TableRoutes } from './tables/index';
 import { ProjectRoutes } from './project/index';
 import { CustomersRoutes } from './customers/index';
 import { TechnologyRoutes } from './technology/index';
+import { UserManagementRoutes } from './usermanagement/index';
 import { FormRoutes } from './forms/index';
 import { GridRoutes } from './grid/index';
 import { BSComponentRoutes } from './bs-component/index';
@@ -26,6 +27,7 @@ export const DashboardRoutes: Route[] = [
         ...ProjectRoutes,
         ...CustomersRoutes,
         ...TechnologyRoutes,
+        ...UserManagementRoutes,
 	    	...BlankPageRoutes,
         ...FormRoutes,
         ...GridRoutes,

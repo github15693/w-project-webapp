@@ -1,0 +1,200 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+          <div class="col-xl-6">
+            <h2 class="page-header">
+                User
+            </h2>
+            <!--<ol class="breadcrumb">-->
+                <!--<li>-->
+                    <!--<i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-table"></i> Project-->
+                <!--</li>-->
+            <!--</ol>-->
+          </div>
+          <div class="col-xl-6" style="text-align: right">
+            <button class="btn btn-primary" (click)="CreateUserModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
+          </div>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="card card-block col-xl-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Email</th>
+                                <th>Skype</th>
+                                <th>Birthday</th>
+                                <th>Phone 1</th>
+                                <th>Phone 2</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Khanh Duong</td>
+                                <td>PM</td>
+                                <td>khanhduong@innoria.com</td>
+                                <td>duonghongkhanh</td>
+                                <td>13-Mar-1993</td>
+                                <td>012345678</td>
+                                <td>-</td>
+                                <td>Vinh Long</td>
+                                <td><i (click)="EditUserModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+<!--START Modal Create new user-->
+<div bsModal #CreateUserModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="CreateUserModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title">Create new user</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Name: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Role: </label>
+            <div class="col-sm-9">
+              <input class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Skype: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Birthday: </label>
+            <div class="col-sm-9"><input class="form-control" type="date"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone 1: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone 2: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Address: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div style="text-align: right;">
+            <button type="button" class="btn btn-secondary" (click)="CreateUserModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END Modal Create new user-->
+
+<!--START Modal Edit user-->
+<div bsModal #EditUserModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="EditUserModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title">Edit user</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Name: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Role: </label>
+            <div class="col-sm-9">
+              <input class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Skype: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Birthday: </label>
+            <div class="col-sm-9"><input class="form-control" type="date"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone 1: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone 2: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Address: </label>
+            <div class="col-sm-9"><input class="form-control"></div>
+          </div>
+          <div style="text-align: right;">
+            <button type="button" class="btn btn-secondary" (click)="EditUserModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END Modal Modal Edit user-->
+
+<!--START Modal Confirm delete-->
+<div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="ConfirmDeleteModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title">Delete item</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          Are you sure to delete this item?
+          <div style="text-align: right;">
+            <button type="button" class="btn btn-secondary" (click)="ConfirmDeleteModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END Modal Modal Confirm delete-->
+

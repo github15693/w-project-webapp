@@ -37,7 +37,7 @@ html {
 //
 // However, `device-width` is broken on IE 10 on Windows (Phone) 8,
 // (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
-// and the fix for that involves a snippet of JavaScript to sniff the user agent
+// and the fix for that involves a snippet of JavaScript to sniff the usermanagement agent
 // and apply some conditional CSS.
 //
 // See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
@@ -60,7 +60,7 @@ html {
 //
 
 html {
-  // Sets a specific default `font-size` for user with `rem` type scales.
+  // Sets a specific default `font-size` for usermanagement with `rem` type scales.
   font-size: $font-size-root;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
