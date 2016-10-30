@@ -6,17 +6,17 @@
             <h2 class="page-header">
                 Technology
             </h2>
-            <!--<ol class="breadcrumb">-->
-                <!--<li>-->
-                    <!--<i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>-->
-                <!--</li>-->
-                <!--<li class="active">-->
-                    <!--<i class="fa fa-table"></i> Project-->
-                <!--</li>-->
-            <!--</ol>-->
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-table"></i> Technologies
+                </li>
+            </ol>
           </div>
           <div class="col-xl-6" style="text-align: right">
-            <button class="btn btn-primary" (click)="CreateTechnologyModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
+            <button class="btn btn-primary" (click)="TechnologyModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
           </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                                 <th scope="row">1</th>
                                 <td>AngularJS</td>
                                 <td>-</td>
-                                <td><i (click)="EditTechnologyModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+                                <td><i (click)="TechnologyModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -49,28 +49,28 @@
 
 
 <!--START Modal Create new technology-->
-<div bsModal #CreateTechnologyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #TechnologyModalCreate="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" (click)="CreateTechnologyModal.hide()" aria-label="Close">
+        <button type="button" class="close" (click)="TechnologyModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Create new project</h5>
+        <h5 class="modal-title">{{modalTitle}}</h5>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="techName" [(ngModel)]="techName" placeholder="Technology name"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Description: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control"  name="techDes" [(ngModel)]="techDes" placeholder="Technology description"></div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="CreateTechnologyModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-secondary" (click)="TechnologyModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-primary" (click)="saveTech()">Save</button>
           </div>
         </form>
       </div>
@@ -78,37 +78,6 @@
   </div>
 </div>
 <!--END Modal Create new technology-->
-
-<!--START Modal Edit technology-->
-<div bsModal #EditTechnologyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="EditTechnologyModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title">Edit technology</h5>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Description: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="EditTechnologyModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--END Modal Modal Edit technology-->
 
 <!--START Modal Confirm delete-->
 <div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
