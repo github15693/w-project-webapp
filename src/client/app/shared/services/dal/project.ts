@@ -20,7 +20,7 @@ export class ProjectDAL{
   private tech_key = "tech"
   private start_at_key = "startAt"
   private end_at_key = "endAt"
-  private udpated_at_key = "updatedAt"
+  private updated_at_key = "updatedAt"
   private created_at_key = "createdAt"
 
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
@@ -43,7 +43,19 @@ export class ProjectDAL{
   }
 
   createProject(){
-
+    var data = {};
+    data[this.project_id_key] = "WProj";
+    data[this.name_key] = "W Project";
+    data[this.customer_key] = this.Parse.currentUser();
+    data[this.project_id_key] = "";
+    data[this.pm_key] = this.Parse.currentUser();
+    data[this.ba_key] = this.Parse.currentUser();
+    data[this.dev_key] = [this.Parse.currentUser(), this.Parse.currentUser(), this.Parse.currentUser()];
+    data[this.status_key] = "Done";
+    data[this.tech_key] = "Angular 2, NodeJS, Bootstrap 4";
+    data[this.start_at_key] = "";
+    data[this.end_at_key] = "";
+    return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);
   }
 
 }

@@ -16,100 +16,29 @@
             <!--</ol>-->
           </div>
           <div class="col-xl-6" style="text-align: right">
-            <button class="btn btn-primary" (click)="CreateProjectModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create project</button>
+            <button class="btn btn-primary" (click)="CreateTechnologyModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
           </div>
         </div>
     </div>
 
-    <!-- /.row -->
-    <div class="row">
-      <!--<div class="card col-xl-12" style="border: 0px; text-align: right">-->
-        <!--<button class="btn btn-primary" type="button">Create project</button>-->
-      <!--</div>-->
-      <div class="card col-xl-12" style="border: 0px">
-            <div class="col-xl-2">
-              <select class="form-control" >
-                <option>BA</option>
-                <option>Khang Tran</option>
-                <option>Tuyet Bui</option>
-                <option>Kim Tran</option>
-                <option>Khanh Nguyen</option>
-                <option>Nguyen Du</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>PM</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Dev</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Customer</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Status</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Technology</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-      </div>
-    </div>
-    <div class="row">
+        <div class="row">
             <div class="card card-block col-xl-12">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Project Name</th>
-                                <th>Customer</th>
-                                <th>PM</th>
-                                <th>Start date</th>
-                                <th>End date</th>
-                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Socialobe</td>
-                                <td>Alec</td>
-                                <td>Khang Tran</td>
-                                <td>01-Aug-2016</td>
-                                <td>01-Jul-2017</td>
-                                <td><span class="label label-info">In process</span></td>
-                                <td><i (click)="EditProjectModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+                                <td>AngularJS</td>
+                                <td>-</td>
+                                <td><i (click)="EditTechnologyModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -119,12 +48,12 @@
 </div>
 
 
-<!--START Modal Create new project-->
-<div bsModal #CreateProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!--START Modal Create new technology-->
+<div bsModal #CreateTechnologyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" (click)="CreateProjectModal.hide()" aria-label="Close">
+        <button type="button" class="close" (click)="CreateTechnologyModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h5 class="modal-title">Create new project</h5>
@@ -132,122 +61,46 @@
       <div class="modal-body">
         <form>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Project name: </label>
+            <label class="col-sm-3 col-form-label">Name: </label>
             <div class="col-sm-9"><input class="form-control"></div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Customer: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Project manager: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-12 col-form-label">Business analysis: </label>
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ BA: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-12 col-form-label">Developer: </label>
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Dev: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Quality control: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Start date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">End date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Technology: </label>
+            <label class="col-sm-3 col-form-label">Description: </label>
             <div class="col-sm-9"><input class="form-control"></div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="CreateProjectModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Create project</button>
+            <button type="button" class="btn btn-secondary" (click)="CreateTechnologyModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-primary">Create</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-<!--END Modal Create new project-->
+<!--END Modal Create new technology-->
 
-<!--START Modal Edit project-->
-<div bsModal #EditProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!--START Modal Edit technology-->
+<div bsModal #EditTechnologyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" (click)="EditProjectModal.hide()" aria-label="Close">
+        <button type="button" class="close" (click)="EditTechnologyModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Edit project</h5>
+        <h5 class="modal-title">Edit technology</h5>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Project name: </label>
+            <label class="col-sm-3 col-form-label">Name: </label>
             <div class="col-sm-9"><input class="form-control"></div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Customer: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Project manager: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-12 col-form-label">Business analysis: </label>
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ BA: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-12 col-form-label">Developer: </label>
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Dev: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Quality control: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Start date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">End date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Technology: </label>
+            <label class="col-sm-3 col-form-label">Description: </label>
             <div class="col-sm-9"><input class="form-control"></div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="EditProjectModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-secondary" (click)="EditTechnologyModal.hide()" aria-hidden="true">Close</button>
             <button type="button" class="btn btn-primary">Save</button>
           </div>
         </form>
@@ -255,7 +108,7 @@
     </div>
   </div>
 </div>
-<!--END Modal Modal Edit project-->
+<!--END Modal Modal Edit technology-->
 
 <!--START Modal Confirm delete-->
 <div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

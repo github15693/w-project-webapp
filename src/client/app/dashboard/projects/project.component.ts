@@ -25,5 +25,8 @@ export class ProjectComponent {
     this.project.getProjects().then((data) => {
       console.log(data);
     });
+    this.project.createProject().then((data) => {
+      console.log(data)
+    });
   }
 }

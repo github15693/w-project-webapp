@@ -11,6 +11,7 @@ import { TableModule } from './tables/table.module';
 import { ProjectModule } from './projects/project.module';
 import { CustomersModule } from './customers/customers.module';
 import { TechnologyModule } from './technology/technology.module';
+import { UserManagementModule } from './usermanagement/usermanagement.module';
 import { FormModule } from './forms/forms.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
@@ -37,6 +38,7 @@ import {AccountDAL, ParseSDK} from '../shared/index';
         ProjectModule,
         CustomersModule,
         TechnologyModule,
+        UserManagementModule,
         FormModule,
         GridModule,
 

@@ -6,10 +6,14 @@ import {
   ModalModule
 } from 'ng2-bootstrap/ng2-bootstrap';
 
+//services
+import {TechnologyDAL, ParseSDK} from '../../shared/index';
+
 @NgModule({
     imports: [RouterModule,FormsModule,ModalModule],
     declarations: [TechnologyComponent],
-    exports: [TechnologyComponent]
+    exports: [TechnologyComponent],
+    providers: [TechnologyDAL, ParseSDK]
 })
 
 export class TechnologyModule { }
