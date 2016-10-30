@@ -18,8 +18,8 @@ const getConfig = (path: string, env: string): any => {
 };
 
 /**
- * Returns the project configuration (consisting of the base configuration provided by seed.config.ts and the additional
- * project specific overrides as defined in project.config.ts)
+ * Returns the projects configuration (consisting of the base configuration provided by seed.config.ts and the additional
+ * projects specific overrides as defined in projects.config.ts)
  */
 export function templateLocals() {
   const configEnvName = argv['config-env'] || 'dev';
