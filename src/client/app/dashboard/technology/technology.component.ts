@@ -20,5 +20,5 @@ export class TechnologyComponent {
   constructor(private technology: TechnologyDAL) {
    this.technology.getTechnologies();
   }
-  
+
 }
