@@ -9,14 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 //services
-import {AccountDAL, ParseSDK} from '../../shared/services/index';
+import {UserDAL, ParseSDK} from '../../shared/services/index';
 
 
 @NgModule({
   imports: [CommonModule, RouterModule, BrowserModule, FormsModule, DropdownModule],
   declarations: [TopNavComponent],
   exports: [TopNavComponent],
-  providers: [ParseSDK, AccountDAL]
+  providers: [ParseSDK, UserDAL]
 })
 
 export class TopNavModule { }

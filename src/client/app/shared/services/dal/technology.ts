@@ -22,15 +22,21 @@ export class TechnologyDAL {
   }
 
   getTechnologies(){
-
+    return this.Parse.query(this.table_name_key, (obj: any)=>{
+      return obj;
+    });
   }
 
-  getTechnology(){
-
+  getTechnology(id: String){
+    return this.Parse.query(this.table_name_key, (obj: any)=>{
+      obj.equalTo(this.id_key, id);
+      return obj;
+    });
   }
 
   createTechnology(techName: any, techDes: any){
-    var data = {};
+    var data: any;
+    data = {};
     data[this.name_key] = techName;
     data[this.des_key] = techDes;
     return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);

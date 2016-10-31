@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import {Router} from '@angular/router';
-import {AccountDAL} from '../shared/index'
+import {UserDAL} from '../shared/index'
 /**
 *	This class represents the lazy loaded DashboardComponent.
 */
@@ -14,8 +14,8 @@ import {AccountDAL} from '../shared/index'
 
 export class DashboardComponent {
 
-  constructor(private account: AccountDAL, private router: Router){
-      if(this.account.getCurrentAccount() == null){
+  constructor(private account: UserDAL, private router: Router){
+      if(this.account.getCurrentUser() == null){
         this.router.navigate(['/']);
       }
   }

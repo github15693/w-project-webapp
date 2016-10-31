@@ -10,7 +10,7 @@ export class UserDAL {
   //key map with parse columns User table in Parse
   private table_name_key = "_User"
   private id_key = "objectId";
-  private name_key = "username";
+  private username_key = "username";
   private password_key = "password";
   private role_key = "role";
   private email_key = "email";
@@ -27,7 +27,9 @@ export class UserDAL {
   }
 
   getusers(){
-
+    return this.Parse.query(this.table_name_key, (obj: any)=>{
+      return obj;
+    });
   }
 
   getUser(){
@@ -37,7 +39,7 @@ export class UserDAL {
   createUser(userName: any, userRole: any, userEmail: any, userSkype: any,
           userDay: any, userPhone1: any, userPhone2: any, userAddress: any, handleResponse: Function){
     var user = this.Parse.user(); //Parse.User() ;
-    user.set(this.name_key, userName);
+    user.set(this.username_key, userName);
     user.set(this.password_key, "12345678");
     user.set(this.role_key, userRole);
     user.set(this.email_key, userEmail);
@@ -48,14 +50,39 @@ export class UserDAL {
     user.set(this.address_key, userAddress);
     console.log(user);
     user.signUp(null, {
-      success: function(user) {
+      success: function(user: any) {
         // Hooray! Let them use the app now.
       },
-      error: function(user, error) {
+      error: function(user: any, error: any) {
         // Show the error message somewhere and let the user try again.
         alert("Error: " + error.code + " " + error.message);
       }
     });
     handleResponse(true);
   }
+
+  public signIn(email: String, pwd: String, handleSuc: any, handdleErr: any){
+    this.Parse.user().logIn(email, pwd,{
+      success: (user: any) => {
+        handleSuc(user);
+      },
+      error: (user: any, err: any)=>{
+        handdleErr(user, err);
+      }
+    });
+    // return this.Parse.query('User', (obj: any)=>{
+    //   obj.equalTo(this.email_key, email);
+    //   obj.equalTo(this.password_key, pwd);
+    //   return obj;
+    // })
+  }
+
+  getCurrentUser(){
+    return this.Parse.currentUser();
+  }
+
+  public signOut(){
+    return this.Parse.user().logOut();
+  }
+
 }

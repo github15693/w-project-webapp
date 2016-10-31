@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
-import {AccountDAL, ParseSDK} from '../services/index'
+import {UserDAL, ParseSDK} from '../services/index'
 
 
 @Component({
@@ -11,7 +11,7 @@ import {AccountDAL, ParseSDK} from '../services/index'
 
 export class TopNavComponent {
 
-  constructor(private router: Router, private  Parse: ParseSDK, private account: AccountDAL){
+  constructor(private router: Router, private  Parse: ParseSDK, private account: UserDAL){
     // console.log(AccountDAL);
   }
 	changeTheme(color: string): void {
@@ -35,7 +35,7 @@ export class TopNavComponent {
 	}
 
   signOut(){
-    this.account.signOut().then((data)=>{
+    this.account.signOut().then((data: any)=>{
       this.router.navigate(['/']);
     });
   }

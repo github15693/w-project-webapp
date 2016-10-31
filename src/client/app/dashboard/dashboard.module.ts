@@ -22,7 +22,7 @@ import { DashboardComponent } from './dashboard.component';
 // import {TopNavComponent} from '../shared/index';
 import {SidebarComponent, TopNavModule} from '../shared/index';
 
-import {AccountDAL, ParseSDK} from '../shared/index';
+import {UserDAL, ParseSDK} from '../shared/index';
 
 
 @NgModule({
@@ -55,7 +55,7 @@ import {AccountDAL, ParseSDK} from '../shared/index';
     ],
     declarations: [DashboardComponent, SidebarComponent],
     exports: [DashboardComponent, SidebarComponent],
-    providers: [AccountDAL, ParseSDK]
+    providers: [UserDAL, ParseSDK]
 })
 
 export class DashboardModule {

@@ -29,7 +29,7 @@ export class TechnologyComponent {
   saveTech(){
     this.technology.createTechnology(
       this.techName, this.techDes
-    ).then((data) => {
+    ).then((data: any) => {
       console.log(data);
       this.createModal.hide();
     });

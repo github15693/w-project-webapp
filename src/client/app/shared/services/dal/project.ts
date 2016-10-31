@@ -39,9 +39,9 @@ export class ProjectDAL{
     });
   }
 
-  getProject(projectId: String){
+  getProject(id: String){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
-      obj.equalTo(this.id_key, projectId);
+      obj.equalTo(this.id_key, id);
       return obj;
     });
   }
@@ -49,7 +49,8 @@ export class ProjectDAL{
   createProject(name: any, customer: any, pm: any, baEst: any, baBA: any, devEst: any, devDev: any,
                 qc: any, status: any, platform: any, tech: any, startAt: any, endAt: any){
 
-    var data = {};
+    var data: any;
+    data = {};
     data[this.name_key] = name;
     data[this.customer_key] = customer;
     data[this.pm_key] = pm;

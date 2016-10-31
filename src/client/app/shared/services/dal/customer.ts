@@ -26,7 +26,8 @@ export class CustomerDAL {
 
   createCustomer(cusName: any, cusCompany: any, cusEmail: string,
                  cusSkype: any, cusPhone: any, cusAddress: any, cusCountry: any){
-    var data = {};
+    var data: any;
+    data = {};
     data[this.name_key] = cusName;
     data[this.company_key] = cusCompany;
     data[this.email_key] = cusEmail;
@@ -39,7 +40,9 @@ export class CustomerDAL {
   }
 
   getCustomers(){
-
+    return this.Parse.query(this.table_name_key, (obj: any)=>{
+      return obj;
+    });
   }
 
   getCustomer(){

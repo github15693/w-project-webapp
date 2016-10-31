@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 
 
 export class ProjectComponent {
-  @ViewChild('childModal') public childModal:ModalDirective;
+  @ViewChild('ProjectModal') public ProjectModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
@@ -38,7 +38,7 @@ export class ProjectComponent {
   projectEndDate = "";
 
   constructor(private project: ProjectDAL, private router: Router) {
-    this.project.getProjects().then((data) => {
+    this.project.getProjects().then((data: any) => {
       this.projects = data;
     });
 
@@ -49,8 +49,9 @@ export class ProjectComponent {
       this.projectName, this.projectCustomer, this.projectManager, this.projectBAEst, this.projectBABA,
       this.projectDevEst, this.projectDevDev, this.projectQC, this.projectStatus, this.projectPlatform,
       this.projectTech, this.projectStartDate, this.projectEndDate
-    ).then((data) => {
-      console.log(data)
+    ).then((data: any) => {
+      console.log(data);
+      this.ProjectModal.hide();
     });
   }
 }

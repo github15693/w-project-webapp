@@ -7,14 +7,14 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 //services
-import {AccountDAL, ParseSDK} from '../shared/index';
+import {UserDAL, ParseSDK} from '../shared/index';
 
 
 @NgModule({
     imports: [CommonModule, RouterModule, BrowserModule, FormsModule],
     declarations: [LoginComponent],
     exports: [LoginComponent],
-    providers: [AccountDAL, ParseSDK]
+    providers: [UserDAL, ParseSDK]
 })
 
 export class LoginModule { }

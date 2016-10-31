@@ -33,7 +33,7 @@ export class CustomersComponent {
   saveCustomer(){
     this.customer.createCustomer(
       this.cusName, this.cusCompany, this.cusEmail, this.cusSkype,
-      this.cusPhone, this.cusAddress, this.cusCountry).then((data)=>{
+      this.cusPhone, this.cusAddress, this.cusCountry).then((data: any)=>{
       console.log(data);
       this.createModal.hide();
     }

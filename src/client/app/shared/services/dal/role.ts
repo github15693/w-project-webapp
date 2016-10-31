@@ -8,7 +8,7 @@ export class RoleDAL {
   Parse: ParseSDK;
 
   //key map with parse columns
-  private table_name_key = "Projects"
+  private table_name_key = "Roles"
 
 
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
@@ -19,6 +19,12 @@ export class RoleDAL {
 
   initFixedData(){
 
+  }
+
+  getRoles(){
+    return this.Parse.query(this.table_name_key, (obj: any)=>{
+      return obj;
+    });
   }
 
 }
