@@ -6,17 +6,17 @@
             <h2 class="page-header">
                 Project
             </h2>
-            <!--<ol class="breadcrumb">-->
-                <!--<li>-->
-                    <!--<i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>-->
-                <!--</li>-->
-                <!--<li class="active">-->
-                    <!--<i class="fa fa-table"></i> Project-->
-                <!--</li>-->
-            <!--</ol>-->
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-table"></i> Projects
+                </li>
+            </ol>
           </div>
           <div class="col-xl-6" style="text-align: right">
-            <button class="btn btn-primary" (click)="CreateProjectModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create project</button>
+            <button class="btn btn-primary" (click)="ProjectModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create project</button>
           </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
                                 <td>01-Aug-2016</td>
                                 <td>01-Jul-2017</td>
                                 <td><span class="label label-info">In process</span></td>
-                                <td><i (click)="EditProjectModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+                                <td><i (click)="ProjectModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -120,66 +120,70 @@
 
 
 <!--START Modal Create new project-->
-<div bsModal #CreateProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #ProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" (click)="CreateProjectModal.hide()" aria-label="Close">
+        <button type="button" class="close" (click)="ProjectModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Create new project</h5>
+        <h5 class="modal-title">{{modalTitle}}</h5>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Project name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectName" [(ngModel)]="projectName"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Customer: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectCustomer" [(ngModel)]="projectCustomer"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Project manager: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectManager" [(ngModel)]="projectManager"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-12 col-form-label">Business analysis: </label>
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectBAEst" [(ngModel)]="projectBAEst"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ BA: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectBABA" [(ngModel)]="projectBABA"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-12 col-form-label">Developer: </label>
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectDevBA" [(ngModel)]="projectDevEst"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Dev: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectDevDev" [(ngModel)]="projectDevDev"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Quality control: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectQC" [(ngModel)]="projectQC"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Start date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
+            <div class="col-sm-9"><input class="form-control" type="date" name="projectStartDate" [(ngModel)]="projectStartDate"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">End date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
+            <div class="col-sm-9"><input class="form-control" type="date" name="projectEndDate" [(ngModel)]="projectEndDate"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Technology: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="projectTech" [(ngModel)]="projectTech"></div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Platform: </label>
+            <div class="col-sm-9"><input class="form-control" name="projectPlatform" [(ngModel)]="projectPlatform"></div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="CreateProjectModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Create project</button>
+            <button type="button" class="btn btn-secondary" (click)="ProjectModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-primary" (click)="saveProject()">Save</button>
           </div>
         </form>
       </div>
@@ -187,75 +191,6 @@
   </div>
 </div>
 <!--END Modal Create new project-->
-
-<!--START Modal Edit project-->
-<div bsModal #EditProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="EditProjectModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title">Edit project</h5>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Project name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Customer: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Project manager: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-12 col-form-label">Business analysis: </label>
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ BA: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-12 col-form-label">Developer: </label>
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Dev: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Quality control: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Start date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">End date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Technology: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="EditProjectModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--END Modal Modal Edit project-->
 
 <!--START Modal Confirm delete-->
 <div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

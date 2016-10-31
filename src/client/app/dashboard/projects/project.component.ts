@@ -1,7 +1,5 @@
 import {Component, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap/components/modal/modal.component';
-import {ProjectDAL} from "../../shared/services/dal/project";
-// import {ProjectDAL} from "../../shared/services/dal/project";
 import {ProjectDAL} from "../../shared/index"
 import {Router} from '@angular/router';
 
@@ -21,11 +19,37 @@ export class ProjectComponent {
   public radioModel:string = 'Middle';
   public checkModel:any = {left: false, middle: true, right: false};
 
+  public projects: any;
+
+  //form data
+  modalTitle = "Project information";
+  projectName = "";
+  projectCustomer = "";
+  projectManager = "";
+  projectBAEst = "";
+  projectBABA = "";
+  projectDevEst = "";
+  projectDevDev = "";
+  projectQC = "";
+  projectStatus = "New";
+  projectPlatform = "";
+  projectTech = "";
+  projectStartDate = "";
+  projectEndDate = "";
+
   constructor(private project: ProjectDAL, private router: Router) {
     this.project.getProjects().then((data) => {
-      console.log(data);
+      this.projects = data;
     });
-    this.project.createProject().then((data) => {
+
+  }
+
+  saveProject(){
+    this.project.createProject(
+      this.projectName, this.projectCustomer, this.projectManager, this.projectBAEst, this.projectBABA,
+      this.projectDevEst, this.projectDevDev, this.projectQC, this.projectStatus, this.projectPlatform,
+      this.projectTech, this.projectStartDate, this.projectEndDate
+    ).then((data) => {
       console.log(data)
     });
   }

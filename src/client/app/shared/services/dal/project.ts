@@ -14,10 +14,14 @@ export class ProjectDAL{
   private name_key = "name"
   private customer_key = "customer"
   private pm_key = "pm"
-  private ba_key = "ba"
-  private dev_key = "dev"
+  private ba_est_key = "baEst"
+  private ba_ba_key = "baBA"
+  private dev_est_key = "devEst"
+  private dev_dev_key = "devDev"
+  private qc_key = "qc"
   private status_key = "status"
   private tech_key = "tech"
+  private platform_key = "platform"
   private start_at_key = "startAt"
   private end_at_key = "endAt"
   private updated_at_key = "updatedAt"
@@ -39,23 +43,28 @@ export class ProjectDAL{
     return this.Parse.query(this.table_name_key, (obj: any)=>{
       obj.equalTo(this.id_key, projectId);
       return obj;
-    })
+    });
   }
 
-  createProject(){
+  createProject(name: any, customer: any, pm: any, baEst: any, baBA: any, devEst: any, devDev: any,
+                qc: any, status: any, platform: any, tech: any, startAt: any, endAt: any){
+
     var data = {};
-    data[this.project_id_key] = "WProj";
-    data[this.name_key] = "W Project";
-    data[this.customer_key] = this.Parse.currentUser();
-    data[this.project_id_key] = "";
-    data[this.pm_key] = this.Parse.currentUser();
-    data[this.ba_key] = this.Parse.currentUser();
-    data[this.dev_key] = [this.Parse.currentUser(), this.Parse.currentUser(), this.Parse.currentUser()];
-    data[this.status_key] = "Done";
-    data[this.tech_key] = "Angular 2, NodeJS, Bootstrap 4";
-    data[this.start_at_key] = "";
-    data[this.end_at_key] = "";
+    data[this.name_key] = name;
+    data[this.customer_key] = customer;
+    data[this.pm_key] = pm;
+    data[this.ba_est_key] = baEst;
+    data[this.ba_ba_key] = baBA;
+    data[this.dev_est_key] = devEst;
+    data[this.dev_dev_key] = devDev;
+    data[this.qc_key] = qc;
+    data[this.status_key] = status;
+    data[this.platform_key] = platform;
+    data[this.tech_key] = tech;
+    data[this.start_at_key] = startAt;
+    data[this.end_at_key] = endAt;
     return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);
+
   }
 
 }
