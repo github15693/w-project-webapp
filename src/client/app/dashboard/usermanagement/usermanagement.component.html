@@ -68,47 +68,45 @@
         <button type="button" class="close" (click)="CreateUserModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Create new user</h5>
+        <h5 class="modal-title">{{modalTitle}}</h5>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="userName" [(ngModel)]="userName" placeholder="Name"></div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Role: </label>
-            <div class="col-sm-9">
-              <input class="form-control">
-            </div>
+            <label class="col-sm-3 col-form-label" >Role: </label>
+            <div class="col-sm-9"><input class="form-control" name="userRole" [(ngModel)]="userRole" placeholder="Role"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Email: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="userEmail" [(ngModel)]="userEmail" placeholder="Email"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Skype: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="userSkype" [(ngModel)]="userSkype" placeholder="Skype"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Birthday: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
+            <div class="col-sm-9"><input class="form-control" name="userDay" type="date" [(ngModel)]="userDay" placeholder="Birth day"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Phone 1: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="userPhone1" [(ngModel)]="userPhone1" placeholder="Telephone number 1"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Phone 2: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="userPhone2" [(ngModel)]="userPhone2" placeholder="Telephone number 2"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Address: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="userAddress" [(ngModel)]="userAddress" placeholder="Address"></div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="CreateUserModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-secondary" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
           </div>
         </form>
       </div>
@@ -116,63 +114,6 @@
   </div>
 </div>
 <!--END Modal Create new user-->
-
-<!--START Modal Edit user-->
-<div bsModal #EditUserModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="EditUserModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title">Edit user</h5>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Role: </label>
-            <div class="col-sm-9">
-              <input class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Email: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Skype: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Birthday: </label>
-            <div class="col-sm-9"><input class="form-control" type="date"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Phone 1: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Phone 2: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Address: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="EditUserModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--END Modal Modal Edit user-->
 
 <!--START Modal Confirm delete-->
 <div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

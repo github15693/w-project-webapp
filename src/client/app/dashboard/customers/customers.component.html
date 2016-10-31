@@ -67,41 +67,41 @@
         <button type="button" class="close" (click)="CreateCustomerModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Create new customer</h5>
+        <h5 class="modal-title">{{modalTitle}}</h5>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusName" [(ngModel)]="cusName" placeholder="Name"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Company: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusCompany" [(ngModel)]="cusCompany" placeholder="Company"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Email: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusEmail" [(ngModel)]="cusEmail" placeholder="Email"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Skype: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusSkype" [(ngModel)]="cusSkype" placeholder="Skype"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Phone: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusPhone" [(ngModel)]="cusPhone" placeholder="Phone"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Address: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusAddress" [(ngModel)]="cusAddress" placeholder="Address"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Country: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
+            <div class="col-sm-9"><input class="form-control" name="cusCountry" [(ngModel)]="cusCountry" placeholder="Country"></div>
           </div>
           <div style="text-align: right;">
             <button type="button" class="btn btn-secondary" (click)="CreateCustomerModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-primary" (click)="saveCustomer()">Save</button>
           </div>
         </form>
       </div>
@@ -109,57 +109,6 @@
   </div>
 </div>
 <!--END Modal Create new customers-->
-
-<!--START Modal Edit customers-->
-<div bsModal #EditCustomerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="EditCustomerModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title">Edit customer</h5>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Company: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Email: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Skype: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Phone: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Address: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Country: </label>
-            <div class="col-sm-9"><input class="form-control"></div>
-          </div>
-          <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="EditCustomerModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--END Modal Modal Edit customer-->
 
 <!--START Modal Confirm delete-->
 <div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

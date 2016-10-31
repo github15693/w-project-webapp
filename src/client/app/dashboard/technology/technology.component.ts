@@ -10,15 +10,29 @@ import {TechnologyDAL} from "../../shared/index"
 })
 
 export class TechnologyComponent {
-  @ViewChild('childModal') public childModal:ModalDirective;
+  @ViewChild('TechnologyModalCreate') public createModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
   public radioModel:string = 'Middle';
   public checkModel:any = {left: false, middle: true, right: false};
 
+  //form data binding
+  modalTitle = "Technology information";
+  techName = "";
+  techDes = "";
+
   constructor(private technology: TechnologyDAL) {
    this.technology.getTechnologies();
+  }
+
+  saveTech(){
+    this.technology.createTechnology(
+      this.techName, this.techDes
+    ).then((data) => {
+      console.log(data);
+      this.createModal.hide();
+    });
   }
 
 }
