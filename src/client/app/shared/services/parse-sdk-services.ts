@@ -121,9 +121,8 @@ export class ParseSDK {
   currentUser(){
     return Parse.User.current();
   }
-
   user(){
-    return Parse.User;
+    return new Parse.User();
   }
 
   parse(){

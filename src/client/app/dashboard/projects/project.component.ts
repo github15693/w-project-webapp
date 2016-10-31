@@ -22,7 +22,7 @@ export class ProjectComponent {
   public checkModel:any = {left: false, middle: true, right: false};
 
   constructor(private project: ProjectDAL, private router: Router) {
-    this.project.getProjects().then((data) => {
+    this.project.getProjects().then((data: any) => {
       console.log(data);
     });
     this.project.createProject().then((data) => {

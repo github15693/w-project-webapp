@@ -2,7 +2,7 @@
  * Created by khanhduong on 10/30/16.
  */
 import { Injectable, Inject } from '@angular/core';
-import {ParseSDK} from '../parse-sdk-services'
+import {ParseSDK} from '../parse-sdk-services';
 @Injectable()
 export class UserDAL {
   Parse: ParseSDK;
@@ -35,9 +35,8 @@ export class UserDAL {
   }
 
   createUser(userName: any, userRole: any, userEmail: any, userSkype: any,
-          userDay: any, userPhone1: any, userPhone2: any, userAddress: any){
-    var Parse;
-    var user = new Parse.User();
+          userDay: any, userPhone1: any, userPhone2: any, userAddress: any, handleResponse: Function){
+    var user = this.Parse.user(); //Parse.User() ;
     user.set(this.name_key, userName);
     user.set(this.password_key, "12345678");
     user.set(this.role_key, userRole);
@@ -47,7 +46,7 @@ export class UserDAL {
     user.set(this.phone_1_key, userPhone1);
     user.set(this.phone_2_key, userPhone2);
     user.set(this.address_key, userAddress);
-
+    console.log(user);
     user.signUp(null, {
       success: function(user) {
         // Hooray! Let them use the app now.
@@ -57,5 +56,6 @@ export class UserDAL {
         alert("Error: " + error.code + " " + error.message);
       }
     });
+    handleResponse(true);
   }
 }

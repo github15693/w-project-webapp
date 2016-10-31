@@ -34,9 +34,10 @@ export class UserManagementComponent {
   saveUser(){
     this.user.createUser(
       this.userName, this.userRole, this.userEmail, this.userSkype,
-      this.userDay, this.userPhone1, this.userPhone2, this.userAddress).then((data) =>{
-      console.log(data);
-      this.createModal.hide();
-    });
+      this.userDay, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
+          if(response){
+            this.createModal.hide();
+          }
+      });
   }
 }
