@@ -15,15 +15,31 @@ export class UserDAL {
   private role_key = "role";
   private email_key = "email";
   private skype_key = "skype";
-  private day_key = "day";
+  private birthday_key = "birthday";
   private phone_1_key = "phone_1";
   private phone_2_key = "phone_2";
   private address_key = "address";
+
+  public userKeys: any;
+  userKeys = {};
 
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
     this.Parse = Parse;
     this.Parse.init()
     console.log("init UserDAL success.");
+
+    //create keys
+    this.userKeys[this.table_name_key] = this.table_name_key;
+    this.userKeys[this.id_key] = this.id_key;
+    this.userKeys[this.username_key] = this.username_key;
+    this.userKeys[this.password_key] = this.password_key;
+    this.userKeys[this.role_key] = this.role_key;
+    this.userKeys[this.email_key] = this.email_key;
+    this.userKeys[this.skype_key] = this.skype_key;
+    this.userKeys[this.birthday_key] = this.birthday_key;
+    this.userKeys[this.phone_1_key] = this.phone_1_key;
+    this.userKeys[this.phone_2_key] = this.phone_2_key;
+    this.userKeys[this.address_key] = this.address_key;
   }
 
   getusers(){
@@ -37,14 +53,14 @@ export class UserDAL {
   }
 
   createUser(userName: any, userRole: any, userEmail: any, userSkype: any,
-          userDay: any, userPhone1: any, userPhone2: any, userAddress: any, handleResponse: Function){
-    var user = this.Parse.user(); //Parse.User() ;
+          userBirthday: any, userPhone1: any, userPhone2: any, userAddress: any, handleResponse: Function){
+    var user = this.Parse.newUser(); //Parse.User() ;
     user.set(this.username_key, userName);
     user.set(this.password_key, "12345678");
     user.set(this.role_key, userRole);
     user.set(this.email_key, userEmail);
     user.set(this.skype_key, userSkype);
-    user.set(this.day_key, userDay);
+    user.set(this.birthday_key, userBirthday);
     user.set(this.phone_1_key, userPhone1);
     user.set(this.phone_2_key, userPhone2);
     user.set(this.address_key, userAddress);

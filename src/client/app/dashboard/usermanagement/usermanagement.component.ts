@@ -22,19 +22,25 @@ export class UserManagementComponent {
   userRole = "";
   userEmail = "";
   userSkype = "";
-  userDay = "";
+  userBirthday = "";
   userPhone1 = "";
   userPhone2 = "";
   userAddress = "";
 
+  users: any;
+  userKeys: any;
+
   constructor(private user: UserDAL){
-    this.user.getusers();
+     this.user.getusers().then((data: any) => {
+       this.users = data;
+    });
+    this.userKeys = this.user.userKeys;
   }
 
   saveUser(){
     this.user.createUser(
       this.userName, this.userRole, this.userEmail, this.userSkype,
-      this.userDay, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
+      this.userBirthday, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
           if(response){
             this.createModal.hide();
           }

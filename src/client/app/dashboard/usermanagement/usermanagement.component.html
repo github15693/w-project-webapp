@@ -40,16 +40,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Khanh Duong</td>
-                                <td>PM</td>
-                                <td>khanhduong@innoria.com</td>
-                                <td>duonghongkhanh</td>
-                                <td>13-Mar-1993</td>
-                                <td>012345678</td>
-                                <td>-</td>
-                                <td>Vinh Long</td>
+                            <tr *ngFor="let user of users; let i = index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{user.get(userKeys.username)}}</td>
+                                <td>{{user.get(userKeys.role)}}</td>
+                                <td>{{user.get(userKeys.email)}}</td>
+                                <td>{{user.get(userKeys.skype)}}</td>
+                                <td>{{user.get(userKeys.birthday)}}</td>
+                                <td>{{user.get(userKeys.phone_1)}}</td>
+                                <td>{{user.get(userKeys.phone_2)}}</td>
+                                <td>{{user.get(userKeys.address)}}</td>
                                 <td><i (click)="EditUserModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>
