@@ -18,11 +18,13 @@ export class UserManagementComponent {
 
   //form data binding
   modalTitle = "User information";
-  userName = "";
+  userFullName = "";
   userRole = "";
   userEmail = "";
+  userName = "";
+  userPass = "";
   userSkype = "";
-  userBirthday = "";
+  userBirthDay = "";
   userPhone1 = "";
   userPhone2 = "";
   userAddress = "";
@@ -39,8 +41,8 @@ export class UserManagementComponent {
 
   saveUser(){
     this.user.createUser(
-      this.userName, this.userRole, this.userEmail, this.userSkype,
-      this.userBirthday, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
+      this.userFullName, this.userRole, this.userEmail, this.userPass, this.userSkype,
+      this.userBirthDay, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
           if(response){
             this.createModal.hide();
           }

@@ -11,6 +11,7 @@ export class UserDAL {
   private table_name_key = "_User"
   private id_key = "objectId";
   private username_key = "username";
+  private fullname_key = "name";
   private password_key = "password";
   private role_key = "role";
   private email_key = "email";
@@ -32,6 +33,7 @@ export class UserDAL {
     this.userKeys[this.table_name_key] = this.table_name_key;
     this.userKeys[this.id_key] = this.id_key;
     this.userKeys[this.username_key] = this.username_key;
+    this.userKeys[this.fullname_key] = this.fullname_key;
     this.userKeys[this.password_key] = this.password_key;
     this.userKeys[this.role_key] = this.role_key;
     this.userKeys[this.email_key] = this.email_key;
@@ -52,13 +54,14 @@ export class UserDAL {
 
   }
 
-  createUser(userName: any, userRole: any, userEmail: any, userSkype: any,
+  createUser(userFullName: any, userRole: any, userEmail: any, userPass: any, userSkype: any,
           userBirthday: any, userPhone1: any, userPhone2: any, userAddress: any, handleResponse: Function){
     var user = this.Parse.newUser(); //Parse.User() ;
-    user.set(this.username_key, userName);
-    user.set(this.password_key, "12345678");
+    user.set(this.fullname_key, userFullName);
     user.set(this.role_key, userRole);
     user.set(this.email_key, userEmail);
+    user.set(this.username_key, userEmail);
+    user.set(this.password_key, userPass);
     user.set(this.skype_key, userSkype);
     user.set(this.birthday_key, userBirthday);
     user.set(this.phone_1_key, userPhone1);
