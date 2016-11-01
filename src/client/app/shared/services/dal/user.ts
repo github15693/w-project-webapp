@@ -26,7 +26,7 @@ export class UserDAL {
     console.log("init UserDAL success.");
   }
 
-  getusers(){
+  getUsers(){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
       return obj;
     });

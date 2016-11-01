@@ -28,62 +28,68 @@
       <!--</div>-->
       <div class="card col-xl-12" style="border: 0px">
             <div class="col-xl-2">
-              <select class="form-control" >
-                <option>BA</option>
-                <option>Khang Tran</option>
-                <option>Tuyet Bui</option>
-                <option>Kim Tran</option>
-                <option>Khanh Nguyen</option>
-                <option>Nguyen Du</option>
-              </select>
+              <ng-select (data)="value"
+                         [multiple]="false"
+                         [items]="items"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         placeholder="BA"></ng-select>
             </div>
             <div class="col-xl-2">
-              <select class="form-control">
-                <option>PM</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <ng-select (data)="value"
+                         [multiple]="false"
+                         [items]="items"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         placeholder="PM"></ng-select>
             </div>
             <div class="col-xl-2">
-              <select class="form-control">
-                <option>Dev</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <ng-select (data)="value"
+                         [multiple]="false"
+                         [items]="items"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         placeholder="DEV"></ng-select>
             </div>
             <div class="col-xl-2">
-              <select class="form-control">
-                <option>Customer</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <ng-select (data)="value"
+                         [multiple]="false"
+                         [items]="items"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         placeholder="Customer"></ng-select>
             </div>
             <div class="col-xl-2">
-              <select class="form-control">
-                <option>Status</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <ng-select (data)="value"
+                         [multiple]="false"
+                         [items]="items"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         placeholder="Status"></ng-select>
             </div>
             <div class="col-xl-2">
-              <select class="form-control">
-                <option>Technology</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <ng-select (data)="value"
+                         [multiple]="false"
+                         [items]="items"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         placeholder="Technology"></ng-select>
             </div>
       </div>
     </div>
+
     <div class="row">
             <div class="card card-block col-xl-12">
                 <div class="table-responsive">
