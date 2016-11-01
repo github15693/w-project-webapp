@@ -18,23 +18,31 @@ export class UserManagementComponent {
 
   //form data binding
   modalTitle = "User information";
-  userName = "";
+  userFullName = "";
   userRole = "";
   userEmail = "";
+  userName = "";
+  userPass = "";
   userSkype = "";
-  userDay = "";
+  userBirthDay = "";
   userPhone1 = "";
   userPhone2 = "";
   userAddress = "";
 
+  users: any;
+  userKeys: any;
+
   constructor(private user: UserDAL){
-    this.user.getusers();
+     this.user.getusers().then((data: any) => {
+       this.users = data;
+    });
+    this.userKeys = this.user.userKeys;
   }
 
   saveUser(){
     this.user.createUser(
-      this.userName, this.userRole, this.userEmail, this.userSkype,
-      this.userDay, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
+      this.userFullName, this.userRole, this.userEmail, this.userPass, this.userSkype,
+      this.userBirthDay, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
           if(response){
             this.createModal.hide();
           }

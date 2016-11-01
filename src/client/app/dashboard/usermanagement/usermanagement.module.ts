@@ -1,4 +1,6 @@
+//noinspection TypeScriptCheckImport
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserManagementComponent } from './usermanagement.component';
@@ -10,7 +12,7 @@ import {
 import {UserDAL, ParseSDK} from '../../shared/index';
 
 @NgModule({
-    imports: [RouterModule,FormsModule,ModalModule],
+    imports: [RouterModule,FormsModule,ModalModule, CommonModule],
     declarations: [UserManagementComponent],
     exports: [UserManagementComponent],
     providers: [UserDAL, ParseSDK]

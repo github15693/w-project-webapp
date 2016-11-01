@@ -40,16 +40,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Khanh Duong</td>
-                                <td>PM</td>
-                                <td>khanhduong@innoria.com</td>
-                                <td>duonghongkhanh</td>
-                                <td>13-Mar-1993</td>
-                                <td>012345678</td>
-                                <td>-</td>
-                                <td>Vinh Long</td>
+                            <tr *ngFor="let user of users; let i = index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{user.get(userKeys.name)}}</td>
+                                <td>{{user.get(userKeys.role)}}</td>
+                                <td>{{user.get(userKeys.email)}}</td>
+                                <td>{{user.get(userKeys.skype)}}</td>
+                                <td>{{user.get(userKeys.birthday)}}</td>
+                                <td>{{user.get(userKeys.phone_1)}}</td>
+                                <td>{{user.get(userKeys.phone_2)}}</td>
+                                <td>{{user.get(userKeys.address)}}</td>
                                 <td><i (click)="EditUserModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>
@@ -74,7 +74,7 @@
         <form>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Name: </label>
-            <div class="col-sm-9"><input class="form-control" name="userName" [(ngModel)]="userName" placeholder="Name"></div>
+            <div class="col-sm-9"><input class="form-control" name="userFullName" [(ngModel)]="userFullName" placeholder="Name"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Role: </label>
@@ -85,12 +85,16 @@
             <div class="col-sm-9"><input class="form-control" name="userEmail" [(ngModel)]="userEmail" placeholder="Email"></div>
           </div>
           <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Password: </label>
+            <div class="col-sm-9"><input class="form-control" name="userPass" [(ngModel)]="userPass" placeholder="Pass" type="password"></div>
+          </div>
+          <div class="form-group row">
             <label class="col-sm-3 col-form-label">Skype: </label>
             <div class="col-sm-9"><input class="form-control" name="userSkype" [(ngModel)]="userSkype" placeholder="Skype"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Birthday: </label>
-            <div class="col-sm-9"><input class="form-control" name="userDay" type="date" [(ngModel)]="userDay" placeholder="Birth day"></div>
+            <div class="col-sm-9"><input class="form-control" name="userBirthDay" type="date" [(ngModel)]="userBirthDay" placeholder="Birth day"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Phone 1: </label>
