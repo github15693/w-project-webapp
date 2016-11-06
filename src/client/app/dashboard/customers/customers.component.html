@@ -40,15 +40,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Alec</td>
-                                <td>Tamar Online</td>
-                                <td>alecspencer.private@gmail.com</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>Australia</td>
+                            <tr *ngFor="let cus of customers; let i = index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{cus.get(cusKeys.name)}}</td>
+                                <td>{{cus.get(cusKeys.company)}}</td>
+                                <td>{{cus.get(cusKeys.email)}}</td>
+                                <td>{{cus.get(cusKeys.skype)}}</td>
+                                <td>{{cus.get(cusKeys.phone)}}</td>
+                                <td>{{cus.get(cusKeys.address)}}</td>
+                                <td>{{cus.get(cusKeys.country)}}</td>
                                 <td><i (click)="EditCustomerModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>

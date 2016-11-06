@@ -10,7 +10,7 @@ import {TechnologyDAL} from "../../shared/index"
 })
 
 export class TechnologyComponent {
-  @ViewChild('TechnologyModalCreate') public createModal:ModalDirective;
+  @ViewChild('TechnologyModal') public techModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
@@ -22,8 +22,12 @@ export class TechnologyComponent {
   techName = "";
   techDes = "";
 
+  technologies: any;
+  techKeys: any;
+
   constructor(private technology: TechnologyDAL) {
-   this.technology.getTechnologies();
+    this.getTechnologies();
+    this.techKeys = this.technology.techKeys;
   }
 
   saveTech(){
@@ -31,7 +35,14 @@ export class TechnologyComponent {
       this.techName, this.techDes
     ).then((data: any) => {
       console.log(data);
-      this.createModal.hide();
+      this.techModal.hide();
+      this.getTechnologies();
+    });
+  }
+
+  getTechnologies(){
+    this.technology.getTechnologies().then((data: any) =>{
+      this.technologies = data;
     });
   }
 

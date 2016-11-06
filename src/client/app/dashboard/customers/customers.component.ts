@@ -9,7 +9,7 @@ import {CustomerDAL} from "../../shared/services/dal/customer";
 })
 
 export class CustomersComponent {
-  @ViewChild('CreateCustomerModal') public createModal:ModalDirective;
+  @ViewChild('CreateCustomerModal') public createCusModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
@@ -26,17 +26,27 @@ export class CustomersComponent {
   cusAddress = "";
   cusCountry = "";
 
+  customers: any;
+  cusKeys: any;
+
   constructor(private  customer: CustomerDAL){
-    this.customer.getCustomers();
+    this.getCustomers();
+    this.cusKeys = this.customer.cusKeys;
   }
 
   saveCustomer(){
     this.customer.createCustomer(
       this.cusName, this.cusCompany, this.cusEmail, this.cusSkype,
-      this.cusPhone, this.cusAddress, this.cusCountry).then((data: any)=>{
-      console.log(data);
-      this.createModal.hide();
-    }
-    )
+      this.cusPhone, this.cusAddress, this.cusCountry).then((data: any)=> {
+        console.log(data);
+        this.createCusModal.hide();
+        this.getCustomers();
+    })
+  }
+
+  getCustomers(){
+    this.customer.getCustomers().then((data: any) =>{
+      this.customers = data;
+    });
   }
 }

@@ -20,6 +20,7 @@ export class CustomerDAL {
 
   public cusKeys: any = {};
 
+
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
     this.Parse = Parse;
     this.Parse.init()
@@ -37,22 +38,7 @@ export class CustomerDAL {
     this.cusKeys[this.country_key] = this.country_key;
 
   }
-
-  createCustomer(cusName: any, cusCompany: any, cusEmail: string,
-                 cusSkype: any, cusPhone: any, cusAddress: any, cusCountry: any){
-    var data: any;
-    data = {};
-    data[this.name_key] = cusName;
-    data[this.company_key] = cusCompany;
-    data[this.email_key] = cusEmail;
-    data[this.skype_key] = cusSkype;
-    data[this.phone_key] = cusPhone;
-    data[this.address_key] = cusAddress;
-    data[this.country_key] = cusCountry;
-
-    return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);
-  }
-
+  
   getCustomers(){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
       return obj;
@@ -61,5 +47,19 @@ export class CustomerDAL {
 
   getCustomer(){
 
+  }
+
+  createCustomer(name: any, company: any, email: any, skype: any,
+                phone: any, address: any, country: any){
+    var data: any;
+    data = {};
+    data[this.name_key] = name;
+    data[this.company_key] = company;
+    data[this.email_key] = email;
+    data[this.skype_key] = skype;
+    data[this.phone_key] = phone;
+    data[this.address_key] = address;
+    data[this.country_key] = country;
+    return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);
   }
 }

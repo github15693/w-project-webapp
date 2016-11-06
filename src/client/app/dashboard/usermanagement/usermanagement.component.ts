@@ -33,9 +33,7 @@ export class UserManagementComponent {
   userKeys: any;
 
   constructor(private user: UserDAL){
-     this.user.getUsers().then((data: any) => {
-       this.users = data;
-    });
+    this.getUsers();
     this.userKeys = this.user.userKeys;
   }
 
@@ -45,7 +43,14 @@ export class UserManagementComponent {
       this.userBirthDay, this.userPhone1, this.userPhone2, this.userAddress, (response: any)=>{
           if(response){
             this.createModal.hide();
+            this.getUsers();
           }
       });
+  }
+
+  getUsers(){
+    this.user.getUsers().then((data: any) => {
+      this.users = data;
+    });
   }
 }

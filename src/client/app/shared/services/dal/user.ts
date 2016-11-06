@@ -25,9 +25,6 @@ export class UserDAL {
 
   public userKeys: any = {};
 
-  public userKeys: any;
-  userKeys = {};
-
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
     this.Parse = Parse;
     this.Parse.init()
@@ -46,11 +43,8 @@ export class UserDAL {
     this.userKeys[this.phone_1_key] = this.phone_1_key;
     this.userKeys[this.phone_2_key] = this.phone_2_key;
     this.userKeys[this.address_key] = this.address_key;
-<<<<<<< HEAD
-=======
     this.userKeys[this.updated_at_key] = this.updated_at_key;
     this.userKeys[this.created_at_key] = this.created_at_key;
->>>>>>> master
   }
 
   getUsers(){

@@ -12,13 +12,19 @@ export class TechnologyDAL {
   private id_key = "objectId";
   private name_key = "name";
   private des_key = "des";
-  private updated_at_key = "updatedAt";
-  private created_at_key = "createdAt";
+
+  public techKeys: any = {};
 
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
     this.Parse = Parse;
     this.Parse.init();
     console.log("init TechnologyDAL success.");
+
+    //init keys
+    this.techKeys[this.table_name_key] = this.table_name_key;
+    this.techKeys[this.id_key] = this.id_key;
+    this.techKeys[this.name_key] = this.name_key;
+    this.techKeys[this.des_key] = this.des_key;
   }
 
   getTechnologies(){
