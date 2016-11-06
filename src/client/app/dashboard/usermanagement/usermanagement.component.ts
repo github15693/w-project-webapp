@@ -33,7 +33,7 @@ export class UserManagementComponent {
   userKeys: any;
 
   constructor(private user: UserDAL){
-     this.user.getusers().then((data: any) => {
+     this.user.getUsers().then((data: any) => {
        this.users = data;
     });
     this.userKeys = this.user.userKeys;

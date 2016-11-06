@@ -8,7 +8,7 @@ export class UserDAL {
   Parse: ParseSDK;
 
   //key map with parse columns User table in Parse
-  private table_name_key = "_User"
+  private table_name_key = "_User";
   private id_key = "objectId";
   private username_key = "username";
   private fullname_key = "name";
@@ -20,9 +20,10 @@ export class UserDAL {
   private phone_1_key = "phone_1";
   private phone_2_key = "phone_2";
   private address_key = "address";
+  private updated_at_key = "updatedAt";
+  private created_at_key = "createdAt";
 
-  public userKeys: any;
-  userKeys = {};
+  public userKeys: any = {};
 
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
     this.Parse = Parse;
@@ -42,10 +43,13 @@ export class UserDAL {
     this.userKeys[this.phone_1_key] = this.phone_1_key;
     this.userKeys[this.phone_2_key] = this.phone_2_key;
     this.userKeys[this.address_key] = this.address_key;
+    this.userKeys[this.updated_at_key] = this.updated_at_key;
+    this.userKeys[this.created_at_key] = this.created_at_key;
   }
 
   getUsers(){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
+      obj.include("role");
       return obj;
     });
   }
@@ -67,14 +71,13 @@ export class UserDAL {
     user.set(this.phone_1_key, userPhone1);
     user.set(this.phone_2_key, userPhone2);
     user.set(this.address_key, userAddress);
-    console.log(user);
     user.signUp(null, {
       success: function(user: any) {
         // Hooray! Let them use the app now.
       },
       error: function(user: any, error: any) {
         // Show the error message somewhere and let the user try again.
-        alert("Error: " + error.code + " " + error.message);
+        console.log("Error: " + error.code + " " + error.message);
       }
     });
     handleResponse(true);
@@ -89,11 +92,6 @@ export class UserDAL {
         handdleErr(user, err);
       }
     });
-    // return this.Parse.query('User', (obj: any)=>{
-    //   obj.equalTo(this.email_key, email);
-    //   obj.equalTo(this.password_key, pwd);
-    //   return obj;
-    // })
   }
 
   getCurrentUser(){
