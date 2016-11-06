@@ -18,10 +18,24 @@ export class CustomerDAL {
   private address_key = "address";
   private country_key = "country";
 
+  public cusKeys: any = {};
+
   constructor(@Inject(ParseSDK) Parse: ParseSDK){
     this.Parse = Parse;
     this.Parse.init()
     console.log("init CustomerDAL success.");
+
+    //init keys
+    this.cusKeys[this.table_name_key] = this.table_name_key;
+    this.cusKeys[this.id_key] = this.id_key;
+    this.cusKeys[this.name_key] = this.name_key;
+    this.cusKeys[this.company_key] = this.company_key;
+    this.cusKeys[this.email_key] = this.email_key;
+    this.cusKeys[this.skype_key] = this.skype_key;
+    this.cusKeys[this.phone_key] = this.phone_key;
+    this.cusKeys[this.address_key] = this.address_key;
+    this.cusKeys[this.country_key] = this.country_key;
+
   }
 
   createCustomer(cusName: any, cusCompany: any, cusEmail: string,

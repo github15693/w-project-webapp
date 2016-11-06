@@ -1,6 +1,6 @@
 //noinspection TypeScriptCheckImport
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserManagementComponent } from './usermanagement.component';
@@ -9,13 +9,13 @@ import {
 } from 'ng2-bootstrap/ng2-bootstrap';
 
 //services
-import {UserDAL, ParseSDK} from '../../shared/index';
+import {ProjectDAL, CustomerDAL, UserDAL, PlatformDAL, TechnologyDAL} from '../../shared/index';
 
 @NgModule({
     imports: [RouterModule,FormsModule,ModalModule, CommonModule],
     declarations: [UserManagementComponent],
     exports: [UserManagementComponent],
-    providers: [UserDAL, ParseSDK]
+    providers: [ProjectDAL, CustomerDAL, UserDAL, PlatformDAL, TechnologyDAL]
 })
 
 export class UserManagementModule { }

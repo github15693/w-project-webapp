@@ -1,126 +1,118 @@
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="col-xl-12">
-          <div class="col-xl-6">
-            <h2 class="page-header">
-                Project
-            </h2>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-table"></i> Projects
-                </li>
-            </ol>
-          </div>
-          <div class="col-xl-6" style="text-align: right">
-            <button class="btn btn-primary" (click)="ProjectModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create project</button>
-          </div>
-        </div>
-    </div>
-
-    <!-- /.row -->
-    <div class="row">
-      <!--<div class="card col-xl-12" style="border: 0px; text-align: right">-->
-        <!--<button class="btn btn-primary" type="button">Create project</button>-->
-      <!--</div>-->
-      <div class="card col-xl-12" style="border: 0px">
-            <div class="col-xl-2">
-              <select class="form-control" >
-                <option>BA</option>
-                <option>Khang Tran</option>
-                <option>Tuyet Bui</option>
-                <option>Kim Tran</option>
-                <option>Khanh Nguyen</option>
-                <option>Nguyen Du</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>PM</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Dev</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Customer</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Status</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="col-xl-2">
-              <select class="form-control">
-                <option>Technology</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="col-xl-6">
+        <h2 class="page-header">
+          Project
+        </h2>
+        <ol class="breadcrumb">
+          <li>
+            <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+          </li>
+          <li class="active">
+            <i class="fa fa-table"></i> Projects
+          </li>
+        </ol>
+      </div>
+      <div class="col-xl-6" style="text-align: right">
+        <button class="btn btn-primary" (click)="ProjectModal.show()"><i class="fa fa-plus"
+                                                                         style="padding-right: 5px"></i> Create project
+        </button>
       </div>
     </div>
-    <div class="row">
-            <div class="card card-block col-xl-12">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Project Name</th>
-                                <th>Customer</th>
-                                <th>PM</th>
-                                <th>Start date</th>
-                                <th>End date</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Socialobe</td>
-                                <td>Alec</td>
-                                <td>Khang Tran</td>
-                                <td>01-Aug-2016</td>
-                                <td>01-Jul-2017</td>
-                                <td><span class="label label-info">In process</span></td>
-                                <td><i (click)="ProjectModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  </div>
+
+  <!-- /.row -->
+  <div class="row">
+    <!--<div class="card col-xl-12" style="border: 0px; text-align: right">-->
+    <!--<button class="btn btn-primary" type="button">Create project</button>-->
+    <!--</div>-->
+    <div class="card col-xl-12" style="border: 0px">
+      <div class="col-xl-2">
+        <ng-select
+          [multiple]="false"
+          [items]="pmList"
+          (selected)="pmFilterSelected($event)"
+          placeholder="PM"></ng-select>
+      </div>
+      <div class="col-xl-2">
+        <ng-select
+          [multiple]="false"
+          [items]="baList"
+          (selected)="baFilterSelected($event)"
+          placeholder="BA"></ng-select>
+      </div>
+      <div class="col-xl-2">
+        <ng-select
+          [multiple]="false"
+          [items]="devList"
+          (selected)="devFilterSelected($event)"
+          placeholder="DEV"></ng-select>
+      </div>
+      <div class="col-xl-2">
+        <ng-select
+          [multiple]="false"
+          [items]="cusList"
+          (selected)="cusFilterSelected($event)"
+          placeholder="Customer"></ng-select>
+      </div>
+      <div class="col-xl-2">
+        <ng-select
+          [multiple]="false"
+          [items]="statusList"
+          (selected)="statusSelected($event)"
+          placeholder="Status"></ng-select>
+      </div>
+      <div class="col-xl-2">
+        <ng-select
+          [multiple]="false"
+          [items]="techList"
+          (selected)="techFilterSelected($event)"
+          placeholder="Technology"></ng-select>
+      </div>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="card card-block col-xl-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Project Name</th>
+            <th>Customer</th>
+            <th>PM</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let project of projects; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{project.get(projectKeys.name)}}</td>
+            <td>{{project.get(projectKeys.customer).get(cusKeys.name)}}</td>
+            <td>Khang Tran</td>
+            <td>01-Aug-2016</td>
+            <td>01-Jul-2017</td>
+            <td><span class="label label-info">In process</span></td>
+            <td><i (click)="ProjectModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i
+              (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <!--START Modal Create new project-->
-<div bsModal #ProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #ProjectModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -137,52 +129,111 @@
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Customer: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectCustomer" [(ngModel)]="projectCustomer"></div>
+            <div class="col-sm-9">
+              <ng-select
+                (data)="cusValueSelect"
+                [multiple]="true"
+                [items]="cusList"
+                (removed)="cusFormRemove($event)"
+                (selected)="cusFormSelected($event)"
+                placeholder="Customer"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Project manager: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectManager" [(ngModel)]="projectManager"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="pmList"
+                (selected)="pmFormSelected($event)"
+                placeholder="PM"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-12 col-form-label">Business analysis: </label>
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectBAEst" [(ngModel)]="projectBAEst"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="baList"
+                (selected)="baEstSelected($event)"
+                placeholder="BA"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ BA: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectBABA" [(ngModel)]="projectBABA"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="baList"
+                (selected)="baBaSelected($event)"
+                placeholder="BA"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-12 col-form-label">Developer: </label>
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectDevBA" [(ngModel)]="projectDevEst"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="devList"
+                (selected)="devEstSelected($event)"
+                placeholder="DEV"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Dev: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectDevDev" [(ngModel)]="projectDevDev"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="devList"
+                (selected)="devDevSelected($event)"
+                placeholder="DEV"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Quality control: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectQC" [(ngModel)]="projectQC"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="qcList"
+                (selected)="qcSelected($event)"
+                placeholder="QC"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Start date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date" name="projectStartDate" [(ngModel)]="projectStartDate"></div>
+            <div class="col-sm-9"><input class="form-control" type="date" name="projectStartDate"
+                                         [(ngModel)]="projectStartDate"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">End date: </label>
-            <div class="col-sm-9"><input class="form-control" type="date" name="projectEndDate" [(ngModel)]="projectEndDate"></div>
+            <div class="col-sm-9"><input class="form-control" type="date" name="projectEndDate"
+                                         [(ngModel)]="projectEndDate"></div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Technology: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectTech" [(ngModel)]="projectTech"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="techList"
+                (selected)="techFormSelected($event)"
+                placeholder="Technology"></ng-select>
+            </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Platform: </label>
-            <div class="col-sm-9"><input class="form-control" name="projectPlatform" [(ngModel)]="projectPlatform"></div>
+            <div class="col-sm-9">
+              <ng-select
+                [multiple]="true"
+                [items]="platformList"
+                (selected)="platformFormSelected($event)"
+                placeholder="Platform"></ng-select>
+            </div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="ProjectModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-secondary" (click)="ProjectModal.hide()" aria-hidden="true">Close
+            </button>
             <button type="button" class="btn btn-primary" (click)="saveProject()">Save</button>
           </div>
         </form>
@@ -193,7 +244,8 @@
 <!--END Modal Create new project-->
 
 <!--START Modal Confirm delete-->
-<div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -206,7 +258,9 @@
         <form>
           Are you sure to delete this item?
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" (click)="ConfirmDeleteModal.hide()" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-secondary" (click)="ConfirmDeleteModal.hide()" aria-hidden="true">
+              Close
+            </button>
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </form>

@@ -34,11 +34,11 @@ export class TechnologyDAL {
     });
   }
 
-  createTechnology(techName: any, techDes: any){
+  createTechnology(name: any, des: any){
     var data: any;
     data = {};
-    data[this.name_key] = techName;
-    data[this.des_key] = techDes;
+    data[this.name_key] = name;
+    data[this.des_key] = des;
     return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);
   }
 
