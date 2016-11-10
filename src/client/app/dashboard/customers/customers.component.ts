@@ -10,7 +10,8 @@ import {CustomerDAL} from "../../shared/services/dal/customer";
 
 export class CustomersComponent {
   @ViewChild('CreateCustomerModal') public createCusModal:ModalDirective;
-
+  @ViewChild('ConfirmDeleteModal') public deleteCusModal:ModalDirective;
+  //code dai ko biet chay ko kaka chua thu
   // Button
   public singleModel:string = '1';
   public radioModel:string = 'Middle';
@@ -48,8 +49,17 @@ export class CustomersComponent {
         this.getCustomers();
       })
     }else{
-      this.customerDAL.updateCustomer(this.setData2Save(this.getObjectById(this.currentObjectId)));
+      this.customerDAL.updateCustomer(this.setData2Save(this.getObjectById(this.currentObjectId))).then((data: any) => {
+        this.createCusModal.hide();
+      });
     }
+  }
+
+  destroyCustomer(){
+    this.customerDAL.destroyCustomer(this.getObjectById(this.currentObjectId)).then((data: any) => {
+      this.deleteCusModal.hide();
+      this.destroyObjectById(this.currentObjectId);
+    });
   }
 
   getObjectById(objectId: any){
@@ -61,6 +71,13 @@ export class CustomersComponent {
       }
     });
     return customer;
+  }
+
+  destroyObjectById(objectId: any){
+    var index = this.customers.indexOf(this.getObjectById(objectId));
+    if(index > -1){
+      this.customers.splice(index, 1);
+    }
   }
 
   showCreateModal(){
@@ -82,6 +99,11 @@ export class CustomersComponent {
       this.cusAddress = cus.get(this.cusKeys.address);
       this.cusCountry = cus.get(this.cusKeys.country);
     }
+  }
+
+  showDeleteModal(customerId: any){
+    this.currentObjectId = customerId;
+    this.deleteCusModal.show();
   }
 
   setData2Save(cusObject: any){

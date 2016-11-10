@@ -43,7 +43,7 @@
                                 <td>{{cus.get(cusKeys.country)}}</td>
                                 <td>
                                   <i (click)="showUpdateModal(cus.id)" class="fa fa-edit main-color-organ icon-edit"></i>
-                                  <i (click)="ConfirmDeleteModal.show()" class="fa fa-remove main-color-red"></i>
+                                  <i (click)="showDeleteModal(cus.id)" class="fa fa-remove main-color-red"></i>
                                 </td>
                             </tr>
                         </tbody>
@@ -120,7 +120,7 @@
           Are you sure to delete this item?
           <div style="text-align: right;">
             <button type="button" class="btn btn-secondary" (click)="ConfirmDeleteModal.hide()" aria-hidden="true">Close</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-danger" (click)="destroyCustomer()">Delete</button>
           </div>
         </form>
       </div>

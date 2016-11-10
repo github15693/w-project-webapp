@@ -106,6 +106,10 @@ export class ParseSDK {
       return parseObj;
   }
 
+  destroy(parseObj:any){
+    return parseObj.destroy();
+  }
+
   saveAll(objList:any){
     return Parse.Object.saveAll(objList);
   }

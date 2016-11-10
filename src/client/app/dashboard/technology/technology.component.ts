@@ -11,6 +11,7 @@ import {TechnologyDAL} from "../../shared/index"
 
 export class TechnologyComponent {
   @ViewChild('TechnologyModal') public createTechModal:ModalDirective;
+  @ViewChild('ConfirmDeleteModal') public deleteTechModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
@@ -85,5 +86,26 @@ export class TechnologyComponent {
     this.technologyDAL.getTechnologies().then((data: any) =>{
       this.technologies = data;
     });
+  }
+
+  //Delete Technology
+
+  showDeleteModal(technologyId: any){
+    this.currentObjectId = technologyId;
+    this.deleteTechModal.show();
+  }
+
+  destroyTechnology(){
+    this.technologyDAL.destroyTechnology(this.getObjectById(this.currentObjectId)).then((data: any) =>{
+      this.deleteTechModal.hide();
+      this.destroyObjectbyId(this.currentObjectId);
+    });
+  }
+
+  destroyObjectbyId(objectId: any){
+    var index = this.technologies.indexOf(this.getObjectById(objectId));
+    if (index > -1){
+      this.technologies.splice(index, 1);
+    }
   }
 }

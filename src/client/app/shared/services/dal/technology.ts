@@ -48,4 +48,8 @@ export class TechnologyDAL {
   updateTechnology(technologyObject: any){
     return this.Parse.setData(this.Parse.newObject(this.table_name_key), technologyObject, true);
   }
+
+  destroyTechnology(technologyObject: any){
+    return this.Parse.destroy(technologyObject);
+  }
 }
