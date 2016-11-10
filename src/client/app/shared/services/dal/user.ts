@@ -54,10 +54,6 @@ export class UserDAL {
     });
   }
 
-  getUser(){
-
-  }
-
   createUser(userFullName: any, userRole: any, userEmail: any, userPass: any, userSkype: any,
           userBirthday: any, userPhone1: any, userPhone2: any, userAddress: any, handleResponse: Function){
     var user = this.Parse.newUser(); //Parse.User() ;
@@ -101,5 +97,4 @@ export class UserDAL {
   public signOut(){
     return this.Parse.user().logOut();
   }
-
 }

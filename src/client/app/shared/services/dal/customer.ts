@@ -38,15 +38,11 @@ export class CustomerDAL {
     this.cusKeys[this.country_key] = this.country_key;
 
   }
-  
+
   getCustomers(){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
       return obj;
     });
-  }
-
-  getCustomer(){
-
   }
 
   createCustomer(name: any, company: any, email: any, skype: any,
@@ -61,5 +57,9 @@ export class CustomerDAL {
     data[this.address_key] = address;
     data[this.country_key] = country;
     return this.Parse.setData(this.Parse.newObject(this.table_name_key), data, true);
+  }
+
+  updateCustomer(customerObject: any){
+    return this.Parse.setData(this.Parse.newObject(this.table_name_key), customerObject, true);
   }
 }

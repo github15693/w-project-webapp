@@ -29,27 +29,74 @@ export class CustomersComponent {
   customers: any;
   cusKeys: any;
 
-  constructor(private  customer: CustomerDAL){
+  currentObjectId: any;
+  currentObject: any;
+
+  constructor(private  customerDAL: CustomerDAL){
     this.getCustomers();
-    this.cusKeys = this.customer.cusKeys;
+    this.cusKeys = this.customerDAL.cusKeys;
+    this.currentObjectId = "";
   }
 
   saveCustomer(){
-    this.customer.createCustomer(
-      this.cusName, this.cusCompany, this.cusEmail, this.cusSkype,
-      this.cusPhone, this.cusAddress, this.cusCountry).then((data: any)=> {
+    if(this.currentObjectId == ""){ //check to create object
+      this.customerDAL.createCustomer(
+        this.cusName, this.cusCompany, this.cusEmail, this.cusSkype,
+        this.cusPhone, this.cusAddress, this.cusCountry).then((data: any)=> {
         console.log(data);
         this.createCusModal.hide();
         this.getCustomers();
-    })
+      })
+    }else{
+      this.customerDAL.updateCustomer(this.setData2Save(this.getObjectById(this.currentObjectId)));
+    }
   }
 
-  updateCustomer(){
+  getObjectById(objectId: any){
+    var customer: any;
+    this.customers.forEach((cus: any) => {
+      if(cus.id == objectId){
+        customer = cus;
+        return false;
+      }
+    });
+    return customer;
+  }
+
+  showCreateModal(){
+    this.currentObjectId = "";
     this.createCusModal.show();
   }
 
+  showUpdateModal(customerId: any){
+    this.currentObjectId = customerId;
+    this.createCusModal.show();
+    var cus: any;
+    cus = this.getObjectById(customerId);
+    if(cus != null){
+      this.cusName = cus.get(this.cusKeys.name);
+      this.cusCompany = cus.get(this.cusKeys.company);
+      this.cusEmail = cus.get(this.cusKeys.email);
+      this.cusSkype = cus.get(this.cusKeys.skype);
+      this.cusPhone = cus.get(this.cusKeys.phone);
+      this.cusAddress = cus.get(this.cusKeys.address);
+      this.cusCountry = cus.get(this.cusKeys.country);
+    }
+  }
+
+  setData2Save(cusObject: any){
+    cusObject.set(this.cusKeys.name, this.cusName);
+    cusObject.set(this.cusKeys.company, this.cusCompany);
+    cusObject.set(this.cusKeys.email, this.cusEmail);
+    cusObject.set(this.cusKeys.skype, this.cusSkype);
+    cusObject.set(this.cusKeys.phone, this.cusPhone);
+    cusObject.set(this.cusKeys.address,this.cusAddress );
+    cusObject.set(this.cusKeys.country, this.cusCountry);
+    return cusObject;
+  }
+
   getCustomers(){
-    this.customer.getCustomers().then((data: any) =>{
+    this.customerDAL.getCustomers().then((data: any) =>{
       this.customers = data;
     });
   }

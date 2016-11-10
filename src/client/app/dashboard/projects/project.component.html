@@ -99,7 +99,7 @@
             <td>{{ project.get(projectKeys.startAt) | date: 'dd-MMM-yyyy' }}</td>
             <td>{{ project.get(projectKeys.endAt) | date: 'dd-MMM-yyyy' }}</td>
             <td><span class="label label-info">{{project.get("status")}}</span></td>
-            <td><i (click)="updateProject(project.id)" style="padding-right:20px" class="fa fa-edit main-color-organ"></i><i
+            <td><i (click)="updateProject(project.id)" class="fa fa-edit main-color-organ icon-edit"></i><i
               (click)="ConfirmDeleteModal.show()" class="fa fa-remove main-color-red"></i></td>
           </tr>
           </tbody>
@@ -131,7 +131,7 @@
             <label class="col-sm-3 col-form-label">Customer: </label>
             <div class="col-sm-9">
               <ng-select
-                [data]="cusListValue"
+                (data)="cusListValue"
                 [multiple]="true"
                 [items]="cusList"
                 (removed)="cusFormRemove($event)"
