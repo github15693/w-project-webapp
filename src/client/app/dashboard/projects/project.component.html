@@ -91,16 +91,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let project of projects; let i = index">
+          <tr *ngFor="let project of projects; let i = index" class="table-row" >
             <th scope="row">{{i+1}}</th>
             <td>{{project.get(projectKeys.name)}}</td>
-            <td>{{project.get(projectKeys.customer).get(cusKeys.name)}}</td>
-            <td>Khang Tran</td>
-            <td>01-Aug-2016</td>
-            <td>01-Jul-2017</td>
-            <td><span class="label label-info">In process</span></td>
-            <td><i (click)="ProjectModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i
-              (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+            <td>{{project.cusMultiMerge}}</td>
+            <td>{{project.pmMultiMerge}}</td>
+            <td>{{ project.get(projectKeys.startAt) | date: 'dd-MMM-yyyy' }}</td>
+            <td>{{ project.get(projectKeys.endAt) | date: 'dd-MMM-yyyy' }}</td>
+            <td><span class="label label-info">{{project.get("status")}}</span></td>
+            <td><i (click)="updateProject(project.id)" style="padding-right:20px" class="fa fa-edit main-color-organ"></i><i
+              (click)="ConfirmDeleteModal.show()" class="fa fa-remove main-color-red"></i></td>
           </tr>
           </tbody>
         </table>
@@ -131,7 +131,7 @@
             <label class="col-sm-3 col-form-label">Customer: </label>
             <div class="col-sm-9">
               <ng-select
-                (data)="cusValueSelect"
+                [data]="cusListValue"
                 [multiple]="true"
                 [items]="cusList"
                 (removed)="cusFormRemove($event)"
@@ -145,6 +145,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="pmList"
+                (removed)="pmFormRemove($event)"
                 (selected)="pmFormSelected($event)"
                 placeholder="PM"></ng-select>
             </div>
@@ -156,6 +157,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="baList"
+                (removed)="baEstRemove($event)"
                 (selected)="baEstSelected($event)"
                 placeholder="BA"></ng-select>
             </div>
@@ -166,6 +168,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="baList"
+                (removed)="baBaRemove($event)"
                 (selected)="baBaSelected($event)"
                 placeholder="BA"></ng-select>
             </div>
@@ -177,6 +180,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="devList"
+                (removed)="devEstRemove($event)"
                 (selected)="devEstSelected($event)"
                 placeholder="DEV"></ng-select>
             </div>
@@ -187,6 +191,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="devList"
+                (removed)="devDevRemove($event)"
                 (selected)="devDevSelected($event)"
                 placeholder="DEV"></ng-select>
             </div>
@@ -197,6 +202,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="qcList"
+                (removed)="qcRemove($event)"
                 (selected)="qcSelected($event)"
                 placeholder="QC"></ng-select>
             </div>
@@ -217,6 +223,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="techList"
+                (removed)="techFormRemove($event)"
                 (selected)="techFormSelected($event)"
                 placeholder="Technology"></ng-select>
             </div>
@@ -227,6 +234,7 @@
               <ng-select
                 [multiple]="true"
                 [items]="platformList"
+                (removed)="platformFormRemove($event)"
                 (selected)="platformFormSelected($event)"
                 placeholder="Platform"></ng-select>
             </div>

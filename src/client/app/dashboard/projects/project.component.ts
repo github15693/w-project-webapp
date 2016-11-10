@@ -36,13 +36,16 @@ export class ProjectComponent {
   public qcList:Array<any> = [];
   public cusList: Array<any> = [];
 
+  //list value
+
+
   public platformList:Array<any> = [];
   public techList:Array<any> = [];
   public roleList:Array<any> = [];
   public statusList:Array<any> = [];
 
   //select value
-  public cusValueSelect: any = [];
+  public cusListValue: any = [];
 
   //keys
   public projectKeys: any;
@@ -50,6 +53,7 @@ export class ProjectComponent {
   public roleKeys: any;
   public cusKeys: any;
   public platformKeys: any;
+  public techKeys: any;
 
   //default data
   public hardCodeRole: any = {};
@@ -58,9 +62,10 @@ export class ProjectComponent {
   modalTitle = "Project information";
   projectName = "";
   projectCustomer: any = [];
-  projectManager = "";
+  projectPM: any = [];
   projectBAEst: any = [];
   projectBABA: any = [];
+  projectDevEst: any = [];
   projectDevEst: any = [];
   projectDevDev: any = [];
   projectQC: any = [];
@@ -79,14 +84,14 @@ export class ProjectComponent {
     this.roleKeys = this.roleDAL.roleKeys;
     this.cusKeys = this.customerDAL.cusKeys;
     this.platformKeys = this.platformDAL.platformKeys
+    this.techKeys = this.technologyDAL.techKeys
 
     //init default data
     this.hardCodeRole = this.roleDAL.hardCodeRole;
 
     //get all list project
-    this.projectDAL.getProjects().then((data: any) => {
-      this.projects = data;
-    });
+    this.getProjects();
+
     //get list user
     this.userDAL.getUsers().then((data: any) => {
       this.allUserList = data;
@@ -129,50 +134,22 @@ export class ProjectComponent {
     //get list customer
     this.customerDAL.getCustomers().then((data: any) => {
       this.allCusList = data;
-      var listData: any = [];
-      data.forEach((cus: any) => {
-        var item: any = {};
-        item["id"] = cus.id;
-        item["text"] = cus.get(this.cusKeys.name);
-        listData.push(item);
-      });
-      this.cusList = listData;
+      this.cusList = this.prepareSelectDataList(data, this.cusKeys.name);
     });
     //get list platform
     this.platformDAL.getPlatforms().then((data: any) => {
       this.allPlatformList = data;
-      var listData: any = [];
-      data.forEach((plat: any) => {
-        var item: any = {};
-        item["id"] = plat.id;
-        item["text"] = plat.get(this.platformKeys.name);
-        listData.push(item);
-      });
-      this.platformList = listData;
+      this.platformList = this.prepareSelectDataList(data, this.platformKeys.name);
     });
     //get list technology
     this.technologyDAL.getTechnologies().then((data: any) => {
       this.allTechList = data;
-      var listData: any = [];
-      data.forEach((tech: any) => {
-        var item: any = {};
-        item["id"] = tech.id;
-        item["text"] = tech.get(this.platformKeys.name);
-        listData.push(item);
-      });
-      this.techList = listData;
+      this.techList = this.prepareSelectDataList(data, this.techKeys.name);;
     });
     //get list role
     this.roleDAL.getRoles().then((data: any) => {
       this.allRoleList = data;
-      var listData: any = [];
-      data.forEach((role: any) => {
-        var item: any = {};
-        item["id"] = role.id;
-        item["text"] = role.get(this.roleKeys.name);
-        listData.push(item);
-      });
-      this.roleList = listData;
+      this.roleList = this.prepareSelectDataList(data, this.roleKeys.name);
     });
     //get project status list
     this.statusList = this.projectDAL.getStatusList();
@@ -181,12 +158,53 @@ export class ProjectComponent {
   //save project
   saveProject(){
     this.projectDAL.createProject(
-      this.projectName, this.projectCustomer, this.projectManager, this.projectBAEst, this.projectBABA,
+      this.projectName, this.projectCustomer, this.projectPM, this.projectBAEst, this.projectBABA,
       this.projectDevEst, this.projectDevDev, this.projectQC, this.projectStatus, this.projectPlatform,
       this.projectTech, this.projectStartDate, this.projectEndDate
     ).then((data: any) => {
       console.log(data);
       this.ProjectModal.hide();
+      this.getProjects();
+    });
+  }
+
+  //get list projects
+  getProjects(){
+    this.projectDAL.getProjects().then((data: any) => {
+      data.forEach((proj: any) => {
+        //merge customer name
+        var cusMultiMerge = "";
+        for(let i = 0; i < proj.get("customer").length; i++){
+          cusMultiMerge += proj.get("customer")[i].get(this.cusKeys.name);
+          if(i < proj.get("customer").length -1){
+            cusMultiMerge += ", ";
+          }
+        }
+        proj["cusMultiMerge"] = cusMultiMerge;
+        //merge pm name
+        var pmMultiMerge = "";
+        for(let i = 0; i < proj.get("pm").length; i++){
+          pmMultiMerge += proj.get("pm")[i].get(this.userKeys.name);
+          if(i < proj.get("pm").length -1){
+            pmMultiMerge += ", ";
+          }
+        }
+        proj["pmMultiMerge"] = pmMultiMerge;
+      });
+      this.projects = data;
+      console.log(this.projects);
+    });
+  }
+
+  public updateProject(projectId: any){
+    this.ProjectModal.show();
+    this.projects.forEach((proj: any) => {
+      if(proj.id == projectId){
+        this.projectName = proj.get(this.projectKeys.name);
+        this.projectCustomer = proj.get(this.projectKeys.customer);
+        this.cusListValue = this.prepareSelectDataList(proj.get(this.projectKeys.customer), this.cusKeys.name);
+        return;
+      }
     });
   }
 
@@ -195,11 +213,17 @@ export class ProjectComponent {
   }
 
   public baEstSelected(value:any):void {
-    console.log('BA selected value is: ', value);
+    this.addSelectValue(value, this.allUserList, this.projectBAEst);
+  }
+  public baEstRemove(value:any):void {
+    this.removeSelectValue(value, this.projectBAEst);
   }
 
   public baBaSelected(value:any):void {
-    console.log('BA selected value is: ', value);
+    this.addSelectValue(value, this.allUserList, this.projectBABA);
+  }
+  public baBaRemove(value:any):void {
+    this.removeSelectValue(value, this.projectBABA);
   }
 
   public pmFilterSelected(value:any):void {
@@ -207,7 +231,10 @@ export class ProjectComponent {
   }
 
   public pmFormSelected(value:any):void {
-    console.log('PM selected value is: ', value);
+    this.addSelectValue(value, this.allUserList, this.projectPM);
+  }
+  public pmFormRemove(value:any):void {
+    this.removeSelectValue(value, this.projectPM);
   }
 
   public devFilterSelected(value:any):void {
@@ -215,29 +242,36 @@ export class ProjectComponent {
   }
 
   public devEstSelected(value:any):void {
-    console.log('DEV selected value is: ', value);
+    this.addSelectValue(value, this.allUserList, this.projectDevEst);
+  }
+  public devEstRemove(value:any):void {
+    this.removeSelectValue(value, this.projectDevEst);
   }
 
   public devDevSelected(value:any):void {
-    console.log('DEV selected value is: ', value);
+    this.addSelectValue(value, this.allUserList, this.projectDevDev);
+  }
+  public devDevRemove(value:any):void {
+    this.removeSelectValue(value, this.projectDevDev);
   }
 
   public qcSelected(value:any):void {
-    console.log('QC selected value is: ', value);
+    this.addSelectValue(value, this.allUserList, this.projectQC);
+  }
+  public qcRemove(value:any):void {
+    this.removeSelectValue(value, this.projectQC);
   }
 
   public cusFilterSelected(value:any):void {
     console.log('Cus selected value is: ', value);
   }
 
-  public cusFormRemove(value:any):void {
-    this.removeSelectValue(value, this.projectCustomer);
-    console.log(this.projectCustomer);
-  }
-
   public cusFormSelected(value:any):void {
     this.addSelectValue(value, this.allCusList, this.projectCustomer);
-    console.log(this.projectCustomer);
+  }
+
+  public cusFormRemove(value:any):void {
+    this.removeSelectValue(value, this.projectCustomer);
   }
 
   public techFilterSelected(value:any):void {
@@ -245,7 +279,10 @@ export class ProjectComponent {
   }
 
   public techFormSelected(value:any):void {
-    console.log('Tech selected value is: ', value);
+    this.addSelectValue(value, this.allTechList, this.projectTech);
+  }
+  public techFormRemove(value:any):void {
+    this.removeSelectValue(value, this.projectTech);
   }
 
   public roleSelected(value:any):void {
@@ -257,7 +294,10 @@ export class ProjectComponent {
   }
 
   public platformFormSelected(value:any):void {
-    console.log('Platform selected value is: ', value);
+    this.addSelectValue(value, this.allPlatformList, this.projectPlatform);
+  }
+  public platformFormRemove(value:any):void {
+    this.removeSelectValue(value, this.projectPlatform);
   }
 
   public roleRemoved(value:any):void {
@@ -292,8 +332,20 @@ export class ProjectComponent {
         formData.splice(i, 1);
         return;
       }
+      i += 1;
     });
     return formData;
+  }
+
+  public prepareSelectDataList(listObjects: any, textKey: any){
+    var listData: any = [];
+    listObjects.forEach((cus: any) => {
+      var item: any = {};
+      item["id"] = cus.id;
+      item["text"] = cus.get(textKey);
+      listData.push(item);
+    });
+    return listData;
   }
 
 }
