@@ -12,6 +12,10 @@ export class TechnologyDAL {
   private id_key = "objectId";
   private name_key = "name";
   private des_key = "des";
+  private updated_at_key = "updatedAt";
+  private created_at_key = "createdAt";
+
+  public techKeys: any = {};
 
   public techKeys: any = {};
 
@@ -25,6 +29,8 @@ export class TechnologyDAL {
     this.techKeys[this.id_key] = this.id_key;
     this.techKeys[this.name_key] = this.name_key;
     this.techKeys[this.des_key] = this.des_key;
+    this.techKeys[this.updated_at_key] = this.updated_at_key;
+    this.techKeys[this.created_at_key] = this.created_at_key;
   }
 
   getTechnologies(){
