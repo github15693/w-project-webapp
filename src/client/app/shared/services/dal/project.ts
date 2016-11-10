@@ -78,6 +78,14 @@ export class ProjectDAL{
   getProjects(){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
       obj.include("customer");
+      obj.include("pm");
+      obj.include("baEst");
+      obj.include("baBA");
+      obj.include("devEst");
+      obj.include("devDev");
+      obj.include("qc");
+      obj.include("platform");
+      obj.include("tech");
       return obj;
     });
   }
