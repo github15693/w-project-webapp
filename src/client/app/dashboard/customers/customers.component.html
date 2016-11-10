@@ -1,56 +1,62 @@
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="col-xl-12">
-          <div class="col-xl-6">
-            <h2 class="page-header">
-                Customers
-            </h2>
-          </div>
-          <div class="col-xl-6" style="text-align: right">
-            <button class="btn btn-primary" (click)="showCreateModal()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
-          </div>
-        </div>
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="col-xl-6">
+        <h2 class="page-header">Customers</h2>
+        <ol class="breadcrumb">
+          <li>
+            <i class="fa fa-fw fa-bar-chart-o"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/project">Project</a>
+          </li>
+          <li class="active">
+            <i class="fa fa-table"></i> Customer
+          </li>
+        </ol>
+      </div>
+      <div class="col-xl-6" style="text-align: right">
+        <button class="btn btn-primary" (click)="showCreateModal()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
+      </div>
     </div>
+  </div>
 
-    <!-- /.row -->
-    <div class="row">
-            <div class="card card-block col-xl-12">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Company</th>
-                                <th>Email</th>
-                                <th>Skype</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>Country</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let cus of customers; let i = index" class="table-row">
-                                <th scope="row">{{i+1}}</th>
-                                <td>{{cus.get(cusKeys.name)}}</td>
-                                <td>{{cus.get(cusKeys.company)}}</td>
-                                <td>{{cus.get(cusKeys.email)}}</td>
-                                <td>{{cus.get(cusKeys.skype)}}</td>
-                                <td>{{cus.get(cusKeys.phone)}}</td>
-                                <td>{{cus.get(cusKeys.address)}}</td>
-                                <td>{{cus.get(cusKeys.country)}}</td>
-                                <td>
-                                  <i (click)="showUpdateModal(cus.id)" class="fa fa-edit main-color-organ icon-edit"></i>
-                                  <i (click)="showDeleteModal(cus.id)" class="fa fa-remove main-color-red"></i>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="card card-block col-xl-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Email</th>
+            <th>Skype</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let cus of customers; let i = index" class="table-row">
+            <th scope="row">{{i+1}}</th>
+            <td>{{cus.get(cusKeys.name)}}</td>
+            <td>{{cus.get(cusKeys.company)}}</td>
+            <td>{{cus.get(cusKeys.email)}}</td>
+            <td>{{cus.get(cusKeys.skype)}}</td>
+            <td>{{cus.get(cusKeys.phone)}}</td>
+            <td>{{cus.get(cusKeys.address)}}</td>
+            <td>{{cus.get(cusKeys.country)}}</td>
+            <td>
+              <i (click)="showUpdateModal(cus.id)" class="fa fa-edit main-color-organ icon-edit"></i>
+              <i (click)="showDeleteModal(cus.id)" class="fa fa-remove main-color-red"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -128,4 +134,3 @@
   </div>
 </div>
 <!--END Modal Modal Confirm delete-->
-

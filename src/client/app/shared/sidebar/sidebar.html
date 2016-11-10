@@ -3,18 +3,18 @@
 </button>
 <nav class="sidebar sidebar-background" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
-        <a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
+        <!--<a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-dashboard"></i> Dashboard
-        </a>
+        </a>-->
         <a [routerLink]="['/dashboard/projects']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-bar-chart-o"></i> Projects
         </a>
-        <a [routerLink]="['chart']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
+       <!-- <a [routerLink]="['chart']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-bar-chart-o"></i> Charts
         </a>
         <a [routerLink]="['tables']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-table"></i> Tables
-        </a>
+        </a>-->
         <a [routerLink]="['customers']" [routerLinkActive]="['router-link-active']" class="list-group-item">
           <i class="fa fa-fw fa-users"></i> Customers
         </a>
@@ -25,9 +25,9 @@
           <i class="fa fa-fw fa-user"></i> User
         </a>
         <a [routerLink]="['forms']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
-            <i class="fa fa-fw fa-edit"></i> Forms
+            <i class="fa fa-fw fa-edit"></i> Project detail
         </a>
-        <a [routerLink]="['element']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
+        <!--<a [routerLink]="['element']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
             <i class="fa fa-fw fa-desktop"></i> Bootstrap Elements
         </a>
         <a [routerLink]="['grid']" [routerLinkActive]="['router-link-active']" class="list-group-item sidebar-background">
@@ -56,6 +56,6 @@
         </a>
         <a class="list-group-item more-themes" href="http://www.strapui.com/" >
             More Themes
-        </a>
+        </a>-->
     </ul>
 </nav>
