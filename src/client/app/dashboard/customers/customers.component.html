@@ -6,14 +6,6 @@
             <h2 class="page-header">
                 Customers
             </h2>
-            <!--<ol class="breadcrumb">-->
-                <!--<li>-->
-                    <!--<i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>-->
-                <!--</li>-->
-                <!--<li class="active">-->
-                    <!--<i class="fa fa-table"></i> Project-->
-                <!--</li>-->
-            <!--</ol>-->
           </div>
           <div class="col-xl-6" style="text-align: right">
             <button class="btn btn-primary" (click)="CreateCustomerModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
@@ -49,7 +41,7 @@
                                 <td>{{cus.get(cusKeys.phone)}}</td>
                                 <td>{{cus.get(cusKeys.address)}}</td>
                                 <td>{{cus.get(cusKeys.country)}}</td>
-                                <td><i (click)="EditCustomerModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+                                <td><i (click)="updateCustomer()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
                             </tr>
                         </tbody>
                     </table>

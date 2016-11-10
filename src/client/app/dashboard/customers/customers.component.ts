@@ -44,6 +44,10 @@ export class CustomersComponent {
     })
   }
 
+  updateCustomer(){
+    this.createCusModal.show();
+  }
+
   getCustomers(){
     this.customer.getCustomers().then((data: any) =>{
       this.customers = data;
