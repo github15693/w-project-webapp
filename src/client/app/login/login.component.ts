@@ -36,43 +36,43 @@ export class LoginComponent {
 
   initializeData(){
     //initialize role and users
-    this.roleDAL.createRole("PM", "Project manager").then((data) => {
-      this.accountDAL.createUser("Khang Tran", data, "khangtran@innoria.com", "12345678", "khangtran",
+    this.roleDAL.createRole("PM", "Project manager").then((data: any) => {
+      this.accountDAL.createUser("Khang Tran", [data], "khangtran@innoria.com", "12345678", "khangtran",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("BA", "Bussiness Analysis").then((data) => {
-      this.accountDAL.createUser("Kim Tran", data, "kimtran@innoria.com", "12345678", "thienkim3006",
+    this.roleDAL.createRole("BA", "Bussiness Analysis").then((data: any) => {
+      this.accountDAL.createUser("Kim Tran", [data], "kimtran@innoria.com", "12345678", "thienkim3006",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("DEV", "Developer").then((data) => {
-      this.accountDAL.createUser("Khanh Nguyen", data, "khanhnguyen@innoria.com", "12345678", "khanhnguyen1303",
+    this.roleDAL.createRole("DEV", "Developer").then((data: any) => {
+      this.accountDAL.createUser("Khanh Nguyen", [data], "khanhnguyen@innoria.com", "12345678", "khanhnguyen1303",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("PM", "Project manager").then((data) => {
-      this.accountDAL.createUser("Khanh Duong", data, "khanhduong@innoria.com", "12345678", "hongkhanh130393",
+    this.roleDAL.createRole("PM", "Project manager").then((data: any) => {
+      this.accountDAL.createUser("Khanh Duong", [data], "khanhduong@innoria.com", "12345678", "hongkhanh130393",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("QC", "Quality Control").then((data) => {
-      this.accountDAL.createUser("Tuyet Bui", data, "tuyetbui@innoria.com", "12345678", "tuyetbui",
+    this.roleDAL.createRole("QC", "Quality Control").then((data: any) => {
+      this.accountDAL.createUser("Tuyet Bui", [data], "tuyetbui@innoria.com", "12345678", "tuyetbui",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("BA", "Bussiness Analysis").then((data) => {
-      this.accountDAL.createUser("Nguyen Du", data, "nguyendu@innoria.com", "12345678", "nguyendu",
+    this.roleDAL.createRole("BA", "Bussiness Analysis").then((data: any) => {
+      this.accountDAL.createUser("Nguyen Du", [data], "nguyendu@innoria.com", "12345678", "nguyendu",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("DEV", "Developer").then((data) => {
-      this.accountDAL.createUser("Phong Do", data, "phongdo@innoria.com", "12345678", "phongdo",
+    this.roleDAL.createRole("DEV", "Developer").then((data: any) => {
+      this.accountDAL.createUser("Phong Do", [data], "phongdo@innoria.com", "12345678", "phongdo",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });
-    this.roleDAL.createRole("QC", "Quality Control").then((data) => {
-      this.accountDAL.createUser("Tho Dinh", data, "thodinh@innoria.com", "12345678", "thodinh",
+    this.roleDAL.createRole("QC", "Quality Control").then((data: any) => {
+      this.accountDAL.createUser("Tho Dinh", [data], "thodinh@innoria.com", "12345678", "thodinh",
         new Date(), "0939649769", "01687683941", "Binh Hung, Binh Chanh, HCM", (response: any)=>{
         });
     });

@@ -4,16 +4,16 @@
         <div class="col-xl-12">
           <div class="col-xl-6">
             <h2 class="page-header">
-                User
+                Users
             </h2>
-            <ol class="breadcrumb">
-              <li>
-                <i class="fa fa-fw fa-bar-chart-o"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/project">Project</a>
-              </li>
-              <li class="active">
-                <i class="fa fa-table"></i> User
-              </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+              <!--<li>-->
+                <!--<i class="fa fa-fw fa-bar-chart-o"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/project">Project</a>-->
+              <!--</li>-->
+              <!--<li class="active">-->
+                <!--<i class="fa fa-table"></i> Users-->
+              <!--</li>-->
+            <!--</ol>-->
           </div>
           <div class="col-xl-6" style="text-align: right">
             <button class="btn btn-primary" (click)="CreateUserModal.show()"><i class="fa fa-plus" style="padding-right: 5px"></i> Create</button>
@@ -29,7 +29,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Role</th>
+                                <th>Roles</th>
                                 <th>Email</th>
                                 <th>Skype</th>
                                 <th>Birthday</th>
@@ -43,14 +43,15 @@
                             <tr *ngFor="let user of users; let i = index">
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{user.get(userKeys.name)}}</td>
-                                <td>{{user.get(userKeys.role)}}</td>
+                                <td>{{user.roleMultiMerge}}</td>
                                 <td>{{user.get(userKeys.email)}}</td>
                                 <td>{{user.get(userKeys.skype)}}</td>
-                                <td>{{user.get(userKeys.birthday)}}</td>
+                                <td>{{user.get(userKeys.birthday) | date: "dd-MMM-yyyy"}}</td>
                                 <td>{{user.get(userKeys.phone_1)}}</td>
                                 <td>{{user.get(userKeys.phone_2)}}</td>
                                 <td>{{user.get(userKeys.address)}}</td>
-                                <td><i (click)="EditUserModal.show()" style="color:blue; padding-right:10px" class="fa fa-edit"></i><i (click)="ConfirmDeleteModal.show()" style="color:red" class="fa fa-remove"></i></td>
+                                <td><i (click)="EditUserModal.show()" class="fa fa-edit main-color-organ"></i>
+                                  <i (click)="ConfirmDeleteModal.show()" class="fa fa-remove main-color-red"></i></td>
                             </tr>
                         </tbody>
                     </table>

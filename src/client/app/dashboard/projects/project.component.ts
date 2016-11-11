@@ -13,6 +13,7 @@ import {ProjectDAL, CustomerDAL, UserDAL, PlatformDAL, TechnologyDAL, RoleDAL} f
 
 export class ProjectComponent {
   @ViewChild('ProjectModal') public ProjectModal:ModalDirective;
+  @ViewChild('ConfirmDeleteModal') public deleteTechModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
@@ -45,7 +46,7 @@ export class ProjectComponent {
   public statusList:Array<any> = [];
 
   //select value
-  public cusListValue: any = [];
+  public cusListValue: any = ["Khang "];
 
   //keys
   public projectKeys: any;
@@ -74,6 +75,9 @@ export class ProjectComponent {
   projectTech: any = [];
   projectStartDate = "";
   projectEndDate = "";
+
+  currentObjectId: any;
+  currentObject: any;
 
   constructor(private projectDAL: ProjectDAL, private userDAL: UserDAL, private customerDAL: CustomerDAL,
               private platformDAL: PlatformDAL, private technologyDAL: TechnologyDAL,
@@ -157,15 +161,21 @@ export class ProjectComponent {
 
   //save project
   saveProject(){
-    this.projectDAL.createProject(
-      this.projectName, this.projectCustomer, this.projectPM, this.projectBAEst, this.projectBABA,
-      this.projectDevEst, this.projectDevDev, this.projectQC, this.projectStatus, this.projectPlatform,
-      this.projectTech, this.projectStartDate, this.projectEndDate
-    ).then((data: any) => {
-      console.log(data);
+    if(this.currentObjectId == ""){
+      this.projectDAL.createProject(
+        this.projectName, this.projectCustomer, this.projectPM, this.projectBAEst, this.projectBABA,
+        this.projectDevEst, this.projectDevDev, this.projectQC, this.projectStatus, this.projectPlatform,
+        this.projectTech, this.projectStartDate, this.projectEndDate
+      ).then((data: any) => {
+        console.log(data);
+        this.ProjectModal.hide();
+        this.getProjects();
+      });
+    }else{
+      // this.technologyDAL.updateTechnology(this.setData2Save(this.getObjectById(this.currentObjectId)));
       this.ProjectModal.hide();
-      this.getProjects();
-    });
+    }
+
   }
 
   //get list projects
@@ -346,6 +356,36 @@ export class ProjectComponent {
       listData.push(item);
     });
     return listData;
+  }
+
+  getObjectById(objectId: any){
+    var project: any;
+    this.projects.forEach((proj: any) =>{
+      if (proj.id == objectId){
+        project = proj;
+        return false;
+      }
+    });
+    return project;
+  }
+
+  showDeleteModal(projectId: any){
+    this.currentObjectId = projectId;
+    this.deleteTechModal.show();
+  }
+
+  destroyProject(){
+    this.projectDAL.destroy(this.getObjectById(this.currentObjectId)).then((data: any) =>{
+      this.deleteTechModal.hide();
+      this.destroyObjectbyId(this.currentObjectId);
+    });
+  }
+
+  destroyObjectbyId(objectId: any){
+    var index = this.projects.indexOf(this.getObjectById(objectId));
+    if (index > -1){
+      this.projects.splice(index, 1);
+    }
   }
 
 }

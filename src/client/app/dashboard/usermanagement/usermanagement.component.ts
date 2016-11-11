@@ -50,6 +50,17 @@ export class UserManagementComponent {
 
   getUsers(){
     this.user.getUsers().then((data: any) => {
+      data.forEach((user: any) => {
+        //merge role name
+        var roleMultiMerge = "";
+        for(let i = 0; i < user.get("role").length; i++){
+          roleMultiMerge += user.get("role")[i].get("name");
+          if(i < user.get("role").length -1){
+            roleMultiMerge += ", ";
+          }
+        }
+        user["roleMultiMerge"] = roleMultiMerge;
+      });
       this.users = data;
     });
   }

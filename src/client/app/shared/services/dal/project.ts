@@ -126,4 +126,8 @@ export class ProjectDAL{
     return statusList;
   }
 
+  destroy(object: any){
+    return this.Parse.destroy(object);
+  }
+
 }
