@@ -11,9 +11,12 @@ import {UserDAL, ParseSDK} from '../services/index'
 
 export class TopNavComponent {
 
-  constructor(private router: Router, private  Parse: ParseSDK, private account: UserDAL){
-    // console.log(AccountDAL);
+  public account: any;
+
+  constructor(private router: Router, private  Parse: ParseSDK, private accountDAL: UserDAL){
+    this.account = this.accountDAL.getCurrentUser();
   }
+
 	changeTheme(color: string): void {
 		var link: any = $('<link>');
 		link
@@ -35,8 +38,9 @@ export class TopNavComponent {
 	}
 
   signOut(){
-    this.account.signOut().then((data: any)=>{
+    this.accountDAL.signOut().then((data: any)=>{
       this.router.navigate(['/']);
     });
   }
+
 }

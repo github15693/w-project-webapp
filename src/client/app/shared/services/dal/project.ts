@@ -93,6 +93,15 @@ export class ProjectDAL{
   getProject(id: String){
     return this.Parse.query(this.table_name_key, (obj: any)=>{
       obj.equalTo(this.id_key, id);
+      obj.include("customer");
+      obj.include("pm");
+      obj.include("baEst");
+      obj.include("baBA");
+      obj.include("devEst");
+      obj.include("devDev");
+      obj.include("qc");
+      obj.include("platform");
+      obj.include("tech");
       return obj;
     });
   }
@@ -128,6 +137,10 @@ export class ProjectDAL{
 
   destroy(object: any){
     return this.Parse.destroy(object);
+  }
+
+  update(object: any){
+    return this.Parse.setData(this.Parse.newObject(this.table_name_key), object, true);
   }
 
 }

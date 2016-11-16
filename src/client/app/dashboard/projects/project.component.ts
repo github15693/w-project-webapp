@@ -1,7 +1,7 @@
 import {Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap/components/modal/modal.component';
 import {Router} from '@angular/router';
-import {ProjectDAL, CustomerDAL, UserDAL, PlatformDAL, TechnologyDAL, RoleDAL} from "../../shared/index"
+import {ProjectDAL, CustomerDAL, UserDAL, PlatformDAL, TechnologyDAL, RoleDAL} from "../../shared/index";
 
 @Component({
 	moduleId: module.id,
@@ -12,8 +12,8 @@ import {ProjectDAL, CustomerDAL, UserDAL, PlatformDAL, TechnologyDAL, RoleDAL} f
 
 
 export class ProjectComponent {
-  @ViewChild('ProjectModal') public ProjectModal:ModalDirective;
-  @ViewChild('ConfirmDeleteModal') public deleteTechModal:ModalDirective;
+  @ViewChild('ProjectModal') public projectModal:ModalDirective;
+  @ViewChild('ConfirmDeleteModal') public deleteModal:ModalDirective;
 
   // Button
   public singleModel:string = '1';
@@ -46,7 +46,15 @@ export class ProjectComponent {
   public statusList:Array<any> = [];
 
   //select value
-  public cusListValue: any = ["Khang "];
+  public cusListValue: Array<any> = [];
+  public baEstListValue:Array<any> = [];
+  public baBaListValue:Array<any> = [];
+  public pmListValue:Array<any> = [];
+  public devEstListValue:Array<any> = [];
+  public devDevListValue:Array<any> = [];
+  public qcListValue:Array<any> = [];
+  public platformListValue:Array<any> = [];
+  public techListValue:Array<any> = [];
 
   //keys
   public projectKeys: any;
@@ -67,7 +75,6 @@ export class ProjectComponent {
   projectBAEst: any = [];
   projectBABA: any = [];
   projectDevEst: any = [];
-  projectDevEst: any = [];
   projectDevDev: any = [];
   projectQC: any = [];
   projectStatus = "New";
@@ -76,8 +83,7 @@ export class ProjectComponent {
   projectStartDate = "";
   projectEndDate = "";
 
-  currentObjectId: any;
-  currentObject: any;
+  currentObjectId: any = "";
 
   constructor(private projectDAL: ProjectDAL, private userDAL: UserDAL, private customerDAL: CustomerDAL,
               private platformDAL: PlatformDAL, private technologyDAL: TechnologyDAL,
@@ -105,26 +111,39 @@ export class ProjectComponent {
       var qcListTemp: any = [];
       this.allUserList.forEach((user: any) => {
         var item: any = {};
-        if(user.get(this.userKeys.role).get(this.roleKeys.name) == this.hardCodeRole.PM){
-          item["id"] = user.id;
-          item["text"] = user.get(this.userKeys.name);
-          pmListTemp.push(item);
-        }
-        if(user.get(this.userKeys.role).get(this.roleKeys.name) == this.hardCodeRole.BA){
-          item["id"] = user.id;
-          item["text"] = user.get(this.userKeys.name);
-          baListTemp.push(item);
-        }
-        if(user.get(this.userKeys.role).get(this.roleKeys.name) == this.hardCodeRole.DEV){
-          item["id"] = user.id;
-          item["text"] = user.get(this.userKeys.name);
-          devListTemp.push(item);
-        }
-        if(user.get(this.userKeys.role).get(this.roleKeys.name) == this.hardCodeRole.QC){
-          item["id"] = user.id;
-          item["text"] = user.get(this.userKeys.name);
-          qcListTemp.push(item);
-        }
+        var roles = user.get(this.userKeys.role);
+        roles.forEach((role: any) =>{
+          if(role.get(this.roleKeys.name) == this.hardCodeRole.PM){
+            item["id"] = user.id;
+            item["text"] = user.get(this.userKeys.name);
+            pmListTemp.push(item);
+            return false;
+          }
+        });
+        roles.forEach((role: any) => {
+          if (role.get(this.roleKeys.name) == this.hardCodeRole.BA) {
+            item["id"] = user.id;
+            item["text"] = user.get(this.userKeys.name);
+            baListTemp.push(item);
+            return false;
+          }
+        });
+        roles.forEach((role: any) => {
+          if (role.get(this.roleKeys.name) == this.hardCodeRole.DEV) {
+            item["id"] = user.id;
+            item["text"] = user.get(this.userKeys.name);
+            devListTemp.push(item);
+            return false;
+          }
+        });
+        roles.forEach((role: any) => {
+          if (role.get(this.roleKeys.name) == this.hardCodeRole.QC) {
+            item["id"] = user.id;
+            item["text"] = user.get(this.userKeys.name);
+            qcListTemp.push(item);
+            return false;
+          }
+        });
       });
       this.pmList = pmListTemp;
       this.baList = baListTemp;
@@ -168,14 +187,36 @@ export class ProjectComponent {
         this.projectTech, this.projectStartDate, this.projectEndDate
       ).then((data: any) => {
         console.log(data);
-        this.ProjectModal.hide();
+        this.projectModal.hide();
         this.getProjects();
       });
     }else{
-      // this.technologyDAL.updateTechnology(this.setData2Save(this.getObjectById(this.currentObjectId)));
-      this.ProjectModal.hide();
+      this.projectDAL.update(this.setData2Save(this.getObjectById(this.currentObjectId))).then((data: any)=>{
+        this.getProjects();
+        this.projectModal.hide();
+      });
     }
 
+  }
+
+  setData2Save(object: any){
+    object.set(this.projectKeys.name, this.projectName);
+    object.set(this.projectKeys.customer, this.projectCustomer);
+    object.set(this.projectKeys.pm, this.projectPM);
+    object.set(this.projectKeys.baEst, this.projectBAEst);
+    object.set(this.projectKeys.baBA, this.projectBABA);
+    object.set(this.projectKeys.devEst, this.projectDevEst);
+    object.set(this.projectKeys.devDev, this.projectDevDev);
+    object.set(this.projectKeys.qc, this.projectQC);
+    object.set(this.projectKeys.platform, this.projectPlatform);
+    object.set(this.projectKeys.tech, this.projectTech);
+    object.set(this.projectKeys.startAt, this.projectStartDate);
+    object.set(this.projectKeys.endAt, this.projectEndDate);
+    return object;
+  }
+
+  showProjectDetail(projectId: String){
+    this.router.navigate(['/dashboard/project-detail', projectId]);
   }
 
   //get list projects
@@ -206,13 +247,45 @@ export class ProjectComponent {
     });
   }
 
-  public updateProject(projectId: any){
-    this.ProjectModal.show();
+  showCreateModal(){
+    this.currentObjectId = "";
+    this.projectModal.show();
+  }
+
+  public showUpdateModal(projectId: any){
+    this.projectModal.show();
+    this.currentObjectId = projectId;
     this.projects.forEach((proj: any) => {
       if(proj.id == projectId){
         this.projectName = proj.get(this.projectKeys.name);
         this.projectCustomer = proj.get(this.projectKeys.customer);
-        this.cusListValue = this.prepareSelectDataList(proj.get(this.projectKeys.customer), this.cusKeys.name);
+        this.cusListValue = this.prepareSelectDataList(proj.get(this.projectKeys.customer), this.userKeys.name);
+
+        this.projectBAEst = proj.get(this.projectKeys.baEst);
+        this.baEstListValue = this.prepareSelectDataList(proj.get(this.projectKeys.baEst), this.userKeys.name);
+
+        this.projectBABA = proj.get(this.projectKeys.baB);
+        this.baBaListValue = this.prepareSelectDataList(proj.get(this.projectKeys.baBA), this.userKeys.name);
+
+        this.projectPM = proj.get(this.projectKeys.pm);
+        this.pmListValue = this.prepareSelectDataList(proj.get(this.projectKeys.pm), this.userKeys.name);
+
+        this.projectDevEst = proj.get(this.projectKeys.devEst);
+        this.devEstListValue = this.prepareSelectDataList(proj.get(this.projectKeys.devEst), this.userKeys.name);
+
+        this.projectDevDev = proj.get(this.projectKeys.devDev);
+        this.devDevListValue = this.prepareSelectDataList(proj.get(this.projectKeys.devDev), this.userKeys.name);
+
+        this.projectQC = proj.get(this.projectKeys.qc);
+        this.qcListValue = this.prepareSelectDataList(proj.get(this.projectKeys.qc), this.userKeys.name);
+
+        this.projectPlatform = proj.get(this.projectKeys.platform);
+        this.platformListValue = this.prepareSelectDataList(proj.get(this.projectKeys.platform), this.platformKeys.name);
+
+        this.projectTech = proj.get(this.projectKeys.tech);
+        this.techListValue = this.prepareSelectDataList(proj.get(this.projectKeys.tech), this.techKeys.name);
+        this.projectStartDate = proj.get(this.projectKeys.startAt);
+        this.projectEndDate = proj.get(this.projectKeys.endAt);
         return;
       }
     });
@@ -349,10 +422,10 @@ export class ProjectComponent {
 
   public prepareSelectDataList(listObjects: any, textKey: any){
     var listData: any = [];
-    listObjects.forEach((cus: any) => {
+    listObjects.forEach((obj: any) => {
       var item: any = {};
-      item["id"] = cus.id;
-      item["text"] = cus.get(textKey);
+      item["id"] = obj.id;
+      item["text"] = obj.get(textKey);
       listData.push(item);
     });
     return listData;
@@ -371,12 +444,12 @@ export class ProjectComponent {
 
   showDeleteModal(projectId: any){
     this.currentObjectId = projectId;
-    this.deleteTechModal.show();
+    this.deleteModal.show();
   }
 
   destroyProject(){
     this.projectDAL.destroy(this.getObjectById(this.currentObjectId)).then((data: any) =>{
-      this.deleteTechModal.hide();
+      this.deleteModal.hide();
       this.destroyObjectbyId(this.currentObjectId);
     });
   }

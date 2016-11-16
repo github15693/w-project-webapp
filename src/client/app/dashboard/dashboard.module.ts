@@ -12,7 +12,7 @@ import { ProjectModule } from './projects/project.module';
 import { CustomersModule } from './customers/customers.module';
 import { TechnologyModule } from './technology/technology.module';
 import { UserManagementModule } from './usermanagement/usermanagement.module';
-import { FormModule } from './forms/forms.module';
+import { ProjectDetailModule } from './project-detail/project-detail.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
 import { BSElementModule } from './bs-element/bsElement.module';
@@ -39,13 +39,13 @@ import {UserDAL, ParseSDK} from '../shared/index';
         CustomersModule,
         TechnologyModule,
         UserManagementModule,
-        FormModule,
+        ProjectDetailModule,
         GridModule,
 
       ChartModule,
       TableModule,
       ProjectModule,
-      FormModule,
+      ProjectDetailModule,
       GridModule,
 
     	BSComponentModule,

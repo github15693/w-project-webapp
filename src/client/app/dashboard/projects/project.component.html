@@ -91,15 +91,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let project of projects; let i = index" class="table-row" >
-            <th scope="row">{{i+1}}</th>
-            <td>{{project.get(projectKeys.name)}}</td>
-            <td>{{project.cusMultiMerge}}</td>
-            <td>{{project.pmMultiMerge}}</td>
-            <td>{{ project.get(projectKeys.startAt) | date: 'dd-MMM-yyyy' }}</td>
-            <td>{{ project.get(projectKeys.endAt) | date: 'dd-MMM-yyyy' }}</td>
-            <td><span class="label label-info">{{project.get("status")}}</span></td>
-            <td><i (click)="updateProject(project.id)" class="fa fa-edit main-color-organ icon-edit"></i><i
+          <tr *ngFor="let project of projects; let i = index" class="table-row">
+            <th scope="row" (click)="showProjectDetail(project.id)">{{i+1}}</th>
+            <td (click)="showProjectDetail(project.id)">{{project.get(projectKeys.name)}}</td>
+            <td (click)="showProjectDetail(project.id)">{{project.cusMultiMerge}}</td>
+            <td (click)="showProjectDetail(project.id)">{{project.pmMultiMerge}}</td>
+            <td (click)="showProjectDetail(project.id)">{{ project.get(projectKeys.startAt) | date: 'dd-MMM-yyyy' }}</td>
+            <td (click)="showProjectDetail(project.id)">{{ project.get(projectKeys.endAt) | date: 'dd-MMM-yyyy' }}</td>
+            <td (click)="showProjectDetail(project.id)"><span class="label label-info">{{project.get("status")}}</span></td>
+            <td><i (click)="showUpdateModal(project.id)" class="fa fa-edit main-color-organ icon-edit"></i><i
               (click)="showDeleteModal(project.id)" class="fa fa-remove main-color-red"></i></td>
           </tr>
           </tbody>
@@ -142,6 +142,7 @@
             <label class="col-sm-3 col-form-label">Project manager: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "pmListValue"
                 [multiple]="true"
                 [items]="pmList"
                 (removed)="pmFormRemove($event)"
@@ -154,6 +155,7 @@
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "baEstListValue"
                 [multiple]="true"
                 [items]="baList"
                 (removed)="baEstRemove($event)"
@@ -165,6 +167,7 @@
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ BA: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "baBaListValue"
                 [multiple]="true"
                 [items]="baList"
                 (removed)="baBaRemove($event)"
@@ -177,6 +180,7 @@
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Estimate: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "devEstListValue"
                 [multiple]="true"
                 [items]="devList"
                 (removed)="devEstRemove($event)"
@@ -188,6 +192,7 @@
             <label class="col-sm-3 col-form-label" style="padding-left: 50px">+ Dev: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "devDevListValue"
                 [multiple]="true"
                 [items]="devList"
                 (removed)="devDevRemove($event)"
@@ -199,6 +204,7 @@
             <label class="col-sm-3 col-form-label">Quality control: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "qcListValue"
                 [multiple]="true"
                 [items]="qcList"
                 (removed)="qcRemove($event)"
@@ -220,6 +226,7 @@
             <label class="col-sm-3 col-form-label">Technology: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "techListValue"
                 [multiple]="true"
                 [items]="techList"
                 (removed)="techFormRemove($event)"
@@ -231,6 +238,7 @@
             <label class="col-sm-3 col-form-label">Platform: </label>
             <div class="col-sm-9">
               <ng-select
+                [active] = "platformListValue"
                 [multiple]="true"
                 [items]="platformList"
                 (removed)="platformFormRemove($event)"

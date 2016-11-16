@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="col-xl-6">
+        <h2 class="page-header">
+          {{project ? project.get("name") : ""}}
+        </h2>
+      </div>
+      <div class="col-xl-6" style="text-align: right">
+        <input type="file" (change)="onFilesChange($event)" id="chooseFile" hidden/>
+        <button class="btn btn-primary" (click)="chooseFile()"><i class="fa fa-upload"></i></button>
+        <button class="btn btn-primary">Close with success</button>
+        <button class="btn btn-primary">Close with fail</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="col-md-6 col-sm-6">Customer: {{project ? project.cusMultiMerge : ""}}</div>
+      <div class="col-md-6 col-sm-6">Project manager: {{project ? project.pmMultiMerge : ""}}</div>
+    </div>
+    <div class="col-xl-12">
+      <div class="col-md-12 col-sm-12">Business analysis</div>
+    </div>
+    <div class="col-xl-12">
+      <div class="col-md-6 col-sm-6 padding-left-sub">Estimates: {{project ? project.baEstMultiMerge : ""}}</div>
+      <div class="col-md-6 col-sm-6 padding-left-sub">BA: {{project ? project.baBAMultiMerge : ""}}</div>
+    </div>
+    <div class="col-xl-12">
+      <div class="col-md-12 col-sm-12">Developer</div>
+    </div>
+    <div class="col-xl-12">
+      <div class="col-md-6 col-sm-6 padding-left-sub">Estimates: {{project ? project.devEstMultiMerge : ""}}</div>
+      <div class="col-md-6 col-sm-6 padding-left-sub">DEV: {{project ? project.devDevMultiMerge : ""}}</div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="col-md-6 col-sm-6">QC: {{project ? project.qcMultiMerge : ""}}</div>
+      <div class="col-md-6 col-sm-6">Platforms: {{project ? project.platformMultiMerge : ""}}</div>
+    </div>
+    <div class="col-xl-12">
+      <div class="col-md-6 col-sm-6">Technologies: {{project ? project.techMultiMerge : ""}}</div>
+      <div class="col-md-6 col-sm-6">Status: {{project ? project.get("status") : ""}}</div>
+    </div>
+    <div class="col-xl-12">
+      <div class="col-md-6 col-sm-6">Start date: {{project ? project.startAt : ""}}</div>
+      <div class="col-md-6 col-sm-6">End date: {{project ? project.endAt : ""}}</div>
+    </div>
+    <!-- Files -->
+    <div class="row" style="">
+      <div class="card card-block col-xl-12">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>File Name</th>
+              <th>Upload Date</th>
+              <th>Last Modified</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let file of files; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{file.name}}</td>
+              <td>{{file.uploadDate}}</td>
+              <td>{{file.lastModified}}</td>
+              <td>
+                <a href="{{file.file.url()}}" download><i class="fa fa-download main-color-organ icon-edit"></i></a>
+                <i (click)="showDeleteModal(file.file._name)" class="fa fa-trash main-color-red" style="cursor: pointer"></i>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--START Modal Confirm delete-->
+<div bsModal #ConfirmDeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="ConfirmDeleteModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title">Delete item</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          Are you sure to delete this item?
+          <div style="text-align: right;">
+            <button type="button" class="btn btn-secondary" (click)="ConfirmDeleteModal.hide()" aria-hidden="true">
+              Close
+            </button>
+            <button type="button" class="btn btn-danger" (click)="deleteFile()">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END Modal Modal Confirm delete-->

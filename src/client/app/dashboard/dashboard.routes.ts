@@ -8,7 +8,7 @@ import { ProjectRoutes } from './projects/index';
 import { CustomersRoutes } from './customers/index';
 import { TechnologyRoutes } from './technology/index';
 import { UserManagementRoutes } from './usermanagement/index';
-import { FormRoutes } from './forms/index';
+import { ProjectDetailRoutes } from './project-detail/index';
 import { GridRoutes } from './grid/index';
 import { BSComponentRoutes } from './bs-component/index';
 import { BSElementRoutes } from './bs-element/index';
@@ -29,7 +29,7 @@ export const DashboardRoutes: Route[] = [
         ...TechnologyRoutes,
         ...UserManagementRoutes,
 	    	...BlankPageRoutes,
-        ...FormRoutes,
+        ...ProjectDetailRoutes,
         ...GridRoutes,
         ...BSElementRoutes
     	]
