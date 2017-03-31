@@ -97,4 +97,6 @@ export class UserDAL {
   public signOut(){
     return this.Parse.user().logOut();
   }
+
+
 }

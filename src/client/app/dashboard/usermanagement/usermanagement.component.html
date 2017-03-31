@@ -50,8 +50,8 @@
                                 <td>{{user.get(userKeys.phone_1)}}</td>
                                 <td>{{user.get(userKeys.phone_2)}}</td>
                                 <td>{{user.get(userKeys.address)}}</td>
-                                <td><i (click)="EditUserModal.show()" class="fa fa-edit main-color-organ"></i>
-                                  <i (click)="ConfirmDeleteModal.show()" class="fa fa-remove main-color-red"></i></td>
+                                <td><i (click)="showUpdateModal(user.id)" class="fa fa-edit main-color-organ"></i>
+                                  <i (click)="showDeleteModal(user.id)" class="fa fa-trash main-color-red"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -110,7 +110,7 @@
             <div class="col-sm-9"><input class="form-control" name="userAddress" [(ngModel)]="userAddress" placeholder="Address"></div>
           </div>
           <div style="text-align: right;">
-            <button type="button" class="btn btn-secondary" aria-hidden="true">Close</button>
+            <button type="button" class="btn btn-secondary" (click)="ConfirmDeleteModal.hide()" aria-hidden="true">Close</button>
             <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
           </div>
         </form>

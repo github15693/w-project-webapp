@@ -10,6 +10,8 @@ import {UserDAL} from "../../shared/services/dal/user";
 
 export class UserManagementComponent {
   @ViewChild('CreateUserModal') public createModal:ModalDirective;
+  @ViewChild('ConfirmDeleteModal') public deleteModal:ModalDirective;
+
 
   // Button
   public singleModel:string = '1';
@@ -31,6 +33,8 @@ export class UserManagementComponent {
 
   users: any;
   userKeys: any;
+
+  currentObjectId: any;
 
   constructor(private user: UserDAL){
     this.getUsers();
@@ -64,4 +68,41 @@ export class UserManagementComponent {
       this.users = data;
     });
   }
+
+  showUpdateModal(technologyId: any){
+    this.currentObjectId = technologyId;
+    this.createModal.show();
+    var user: any;
+    user = this.getObjectById(technologyId);
+    if (user != null){
+      this.userFullName = user.get();
+      this.userRole = "";
+      this.userEmail = "";
+      this.userName = "";
+      this.userPass = "";
+      this.userSkype = "";
+      this.userBirthDay = "";
+      this.userPhone1 = "";
+      this.userPhone2 = "";
+      this.userAddress = "";
+    }
+  }
+
+  showDeleteModal(technologyId: any){
+    this.currentObjectId = technologyId;
+    this.deleteModal.show();
+  }
+
+  getObjectById(objectId: any){
+    var _user: any;
+    this.users.forEach((user: any) =>{
+      if (user.id == objectId){
+        _user = user;
+        return false;
+      }
+    });
+    return _user;
+  }
+
+
 }

@@ -58,6 +58,7 @@
             <tr>
               <th>#</th>
               <th>File Name</th>
+              <th>File Type</th>
               <th>Upload Date</th>
               <th>Last Modified</th>
               <th>Action</th>
@@ -67,6 +68,7 @@
             <tr *ngFor="let file of files; let i = index">
               <th scope="row">{{i+1}}</th>
               <td>{{file.name}}</td>
+              <td>{{file.extension}}</td>
               <td>{{file.uploadDate}}</td>
               <td>{{file.lastModified}}</td>
               <td>

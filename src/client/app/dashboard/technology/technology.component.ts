@@ -27,7 +27,6 @@ export class TechnologyComponent {
   techKeys: any;
 
   currentObjectId: any;
-  currentObject: any;
 
   constructor(private technologyDAL: TechnologyDAL) {
     this.getTechnologies();

@@ -24,7 +24,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   public currentFileName: any = "";
 
   constructor(private route: ActivatedRoute, private projectDAL: ProjectDAL, private fileDAL: FileDAL) {
-
   }
 
   ngOnInit() {
@@ -83,7 +82,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         file["size"] = _file.size;
         file["uploadDate"] = this.datePipe.transform(new Date(), 'dd-MMM-yyyy');
         file["lastModified"] = this.datePipe.transform(_file.lastModified, 'dd-MMM-yyyy');
-        file["file"] = this.fileDAL.newfile(fileInput.target.files[0].name, fileInput.target.files[0]);
+        file["file"] = this.fileDAL.newfile(fileInput.target.files[0].name.replace(/[^\w\s][^\w.]/gi, ''), fileInput.target.files[0]);
+        if(this.files == null) this.files = [];
         this.files.splice(0, 0, file);
         this.currentProject.set("files", this.files);
         this.projectDAL.update(this.currentProject);
